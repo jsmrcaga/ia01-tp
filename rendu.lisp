@@ -17,7 +17,13 @@
 	)
 )
 
-(defun double(L)(
-	
+(defun double(L)
+	(if (LISTP L)
+		(if (> (length L) 0) ; condition
+			(list (car L) (car L) (double (cdr L))) ; then
+			(car L) ; else
+		)
+		(NIL);else
 	)
 )
+

@@ -39,8 +39,16 @@
   )
 )
 
-(defun FB3 () ; retourne la liste des personnes dont le nom est précisé en argument
+(defun FB3 (nomP base)
+  (if (null base) ; retourne la liste des personnes dont le nom est précisé en argument
+    (if (eq (nom (car base)) nomP)
+        (list (nom (car base))) ;then
+        (NIL)
+    );then
+    (FB3 (cdr base));else
   )
+)
+
 
 (defun FB4 () ; retourne la première personne qui a X ans (X = un argument) ou nil
   )

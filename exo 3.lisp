@@ -28,13 +28,11 @@
   )
 
 (defun FB2 (Base) ; affiche les personnes qui s'appellent Perrot
-  (if (null Base)
-      "Pas d'occurence"
-    ((if (eq (nom (car Base)) 'Perrot)
-        (car Base)
-         "Pas Perrot"
-       )
-     (FB2 (cdr Base))
+  (if (not (null Base))
+      (cons (if (eq (nom (car Base)) 'Perrot)
+          (car Base)
+        )
+       (FB2 (cdr Base))
      )
   )
 )

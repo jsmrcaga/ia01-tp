@@ -24,7 +24,7 @@
 (defun double(L)
 	(if (LISTP L)
 		(if (> (length L) 0) ; condition
-			(list (car L) (car L) (double (cdr L))) ; then
+			(append (list (car L) (car L)) (double (cdr L))) ; then
 			(car L) ; else
 		)
 		(NIL);else
@@ -32,9 +32,18 @@
 )
 
 (defun doublebis(L)
-	(if (> (length L) 0) ; condition
-			(doublebis (list (car L) (car L) (doublebis (cdr L)))) ; then
-			(car L) ; else
+	(if (LISTP L)
+		(if (> (length L) 0) ; condition
+			(append
+				(if (listp (car L))
+					(list (doublebis (car L)))
+					(list (car L) (car L))
+				)
+				(doublebis (cdr L))
+			)
+			(car L)
+		)
+		L
 	)
 )
 

@@ -37,22 +37,44 @@
   )
 )
 
-(defun FB3 (nomP base)
-  (if (null base) ; retourne la liste des personnes dont le nom est précisé en argument
+(defun FB3 (nomP base) ; retourne la liste des personnes dont le nom est précisé en argument
+  (if (> (length base) 0)
     (if (eq (nom (car base)) nomP)
-        (list (nom (car base))) ;then
-        (NIL)
+        (append (list (car base)) (FB3 nomP (cdr base))) ;then
+        (FB3 nomP (cdr base));else
     );then
-    (FB3 (cdr base));else
+    NIL
   )
 )
 
 
-(defun FB4 () ; retourne la première personne qui a X ans (X = un argument) ou nil
+(defun FB4 (Xans base) ; retourne la première personne qui a X ans (X = un argument) ou nil
+  (if (> (length base) 0)
+    (if (eq (age (car base)) Xans)
+      (car base)
+      (FB4 Xans (cdr base))
+    )
+    NIL
   )
+)
 
-(defun FB5 () ; retourne la première personne qui possède moins de 100 livres ou nil
+(defun FB5 (base) ; retourne la première personne qui possède moins de 100 livres ou nil
+  (if (> (length base) 0)
+    (if (< (nombre-livres (car base)) 100)
+      (car base)
+      (FB5 (cdr base))
+    )
+    NIL
   )
+)
 
-(defun FB6 () ; calcule et retourne la moyenne des âges des personnes de la famille X (X = un argument)
+(defun FB6 (X base) ; calcule et retourne la moyenne des âges des personnes de la famille X (X = un argument)
+  (setq personnes (FB3 X base))
+  (setq somme 0)
+  (setq nb 0)
+  (dolist (personne personnes) ; pour chaque élément de la liste personneS on exécute la boucle. <=> foreach personneS as personne
+    (setq somme (+ somme (age personne)))
+    (setq nb (+ nb 1))
   )
+  (/ somme nb)
+)

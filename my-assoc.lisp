@@ -4,11 +4,12 @@
 ; de donnees en duplet
 
 (defun my-assoc(cle liste)
+	(declare (special cle))
      (mapcar
       '(lambda (l)
                 (if (eq (car l) cle)
 				(print l);then
-				(NIL);else
+				NIL;else
 			))
 		liste
 	)

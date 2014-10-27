@@ -1,0 +1,40 @@
+Ce projet a pour but d’illustrer comment on peut représenter un problème comme un espace
+d’états et sa résolution comme une recherche dans cet espace. Nous allons pour cela
+prendre l'exemple du jeu des allumettes :
+
+Ce jeu se joue à deux. La situation de départ est un nombre donné d’allumettes (ce nombre 
+sera appelé la dimension du jeu), associé à l’indication du joueur qui doit commencer le jeu.
+Chacun des joueurs retire alors à tour de rôle 1, 2 ou 3 allumettes parmi les allumettes encore 
+disponibles. 
+/* Le joueur qui gagne est celui qui réussit à retirer la (ou les) dernière(s) 
+allumette(s). */ Je pense plutôt : celui qui arrive à en laisser une seule. Celui qui a perdu est ce lui qui tire la dernière.
+
+
+
+Résolution : 
+Parcours dans un espace d’états du problème où chaque état est représenté formellement par 
+deux variables représentant le nombre d’allumettes disponibles et le joueur qui a la main.
+1- Donner la liste des états possibles pour une partie disposant de 5 allumettes.
+Les opérateurs de transformation représentant les différents coups permis sont suffisants pour 
+ce problème. A titre d’exemple, ces opérateurs peuvent être représentés par une liste de deux 
+éléments : le joueur qui agit et le nombre d’allumettes qu’il retire. 
+2- Donner la liste des opérateurs, classer les opérateurs possibles selon l’état courant. 
+3- Sachant que le joueur 1 démarre la partie, donner l’état initial et les états finaux.
+4- Donner l’arbre de recherche à partir de l’état initial.
+5- Définir les fonctions lisp de résolution de problème selon que le parcours de l’arbre se 
+fait en profondeur ou en largeur d’abord. N’oubliez pas de prévoir un affichage afin de 
+pouvoir visualiser la solution.
+
+Réponses : (je suis pas allé bien loin ^^)
+1- ouate états possibles ? J'ai fait un arbre d'exploration mais c'est pas ça (arbre.jpg)... Ça
+doit pas être bien compliqué mais j'ai pas idée ^^
+2- Là non plus je ne comprend pas ce qu'il attendent de nous...
+3- 	État initial : 5 allumettes en jeu, au joueur 1 de jouer
+	États finaux : J1 perd ou J1 gagne
+4- Mon arbre.jpg ?
+5- Je me suis dit qu'on pouvait faire ça : le programme est en fait une aide pour un des deux joueurs.
+Il y a un programme principal qui prend en paramètre la personne qu'on aide, la personne qui va joueur et
+le nombre d'allumettes en jeu. Si c'est la personne qu'on aide qui va jouer, on l'aide, sinon, on lui demande ce qu'a
+joué l'autre. Pour l'aider, on lui dit si il gagne ou s'il perd forcément vu l'état actuel des choses, et
+on lui dit quoi jouer. Une autre fonction s'occupe d'explorer les possibilités et d'enregistrer l'exploration de l'arbre
+(histoire de pas avoir à explorer l'arbre de possibilités à chaque tour...) (machin.jpg)

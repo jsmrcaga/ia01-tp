@@ -49,14 +49,13 @@
 
 (defun monAppend (L M)
 	(append L M)
-
 )
 
 (defun myEqual(A B)
-	(COND ((and (listp A) (listp B)) 
+	(COND
+		((and (listp A) (listp B)) 
 	 		(EQUAL A B)
 	 	)
-
 	 	((and (atom A) (atom B)) 
 	 		(EQ A B)
 	 	)

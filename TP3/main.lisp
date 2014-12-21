@@ -14,7 +14,11 @@
 )
 
 (defun verifyFacts () 
+	(dolist (currentRecipe listOfRecipes)
 
+		(if (member ))
+
+		)
 
 	)
 

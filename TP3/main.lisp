@@ -20,7 +20,6 @@
 
 (defun getFirstIngredients () 
 
-	(print "Veuillez entrer les ingredients que vous possedez")
 
 
 	
@@ -33,7 +32,10 @@
 
 		(dolist (currentIngredient (cadr current))
 
-			(princ (cadr currentIngredient))
+			(if (eq lettre (char (cadr currentIngredient) 11))
+				(princ (cadr currentIngredient))
+			)
+			
 
 			)
 

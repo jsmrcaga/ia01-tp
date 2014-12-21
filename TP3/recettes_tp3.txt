@@ -1,0 +1,145 @@
+croissant 39
+pate à vienoiseries
+
+pain au choc 40
+
+brioche parisienne 36
+pate briochée + oeuf sucre...
+
+tropézienne 38
+pate briochée
+crême (?)
+
+chaussons 44
+compote
+
+chinois 56
+2 pates briochées
+garniture_et_glacage_chinois
+
+escargots 64
+brioche pour escargots (pate briochée...) + ...
+
+streusel 66
+brioche + ...
+crumble
+
+tarte à l'oignon 80
+preparation à l'oignon
+
+omelette aux oignons
+prépa + appareil à omelette
+
+galettes de pomme de terre 100
+base pour galettes légumes + patates
+
+galettes légumes
+bpgl + ratatouille
+
+bpgl
+appareil à omelette + pdt + (avoine) 
+
+ratatouille
+
+vacherin 312
+chantilly
+glace vanille
+
+quiche lorraine 164
+appareil à omelette + lardons
+
+vol au vent 144
+poulet poché + ...
+
+tourte au poulet 146
+pp+ pate feuilletée + pate brisée +...
+
+flammekueche 170
+pate brisée + préparation aux oignons + lardons, creme
+
+ficelle picarde 182
+pate à crepe + bechamel + jambon champinon
+
+clafouti tomates cerises 190
+appareil à omelette + farine -> appareil clafouti + ...
+
+clafouti cerises 344
+appareil clafoutis + sucre+...
+
+buchette au fromage 192
+
+purée pdt
+
+brandade morue 198
+
+mascarpone 202
+
+Tiramisu 278
+
+laitages ?
+
+meringue ? 218
+
+biscuits à la cuiller 228
+
+chouquettes au sucre 230
+
+profiterolles 280
+
+éclairs à la vanille 244
+pâte à choux + crême patissiere
+glaçage vanillé
+
+flan patissier 252
+flan + pate brisée
+
+baba au rhum 254
+brioche + sirop pour baba + creme chantilly
+
+crépes suzette 256
+pate à crepes + sirop pour suzette
+
+iles flottantes 268 ?
+creme anglaise + caramel + oeufs pochés pour iles flottantes
+
+religieuse au chocolat 276
+
+foret noire 286
+
+mousse au chocolat 294
+praliné croustillant
+biscuit pr gateau
+trianon 288
+
+opéra 290
+
+poirier au choc 292
+
+brownie marbré choco-ricotta 300
+(exemple phoyo !)
+
+cheesecxake 302
+
+millefeuille 308
+pate feuilletée + creme patissiere + glacage
+
+frambroisier 310
+
+paris-brest 316
+
+napolitain 328
+
+tarte aux fraises 350
+garniture + creme + pate sablée
+
+tarte bourdaloue 354
+pate sablee + creme d'amande + garniture
+
+creme d'amande ?
+pate d'amande ?
+
+tarte au citron meringuée
+
+tarte au rhubarbe meringuée
+
+

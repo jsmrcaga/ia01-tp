@@ -92,7 +92,7 @@ glaçage vanillé
 
 flan patissier 252
 flan + pate brisée
-
+ 
 baba au rhum 254
 brioche + sirop pour baba + creme chantilly
 

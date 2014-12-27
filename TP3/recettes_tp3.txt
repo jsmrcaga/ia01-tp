@@ -3,26 +3,26 @@ pate à vienoiseries
 
 pain au choc 40
 
-brioche parisienne 36
-pate briochée + oeuf sucre...
+	brioche parisienne 36
+	pate briochée + oeuf sucre...
 
-tropézienne 38
-pate briochée
-crême (?)
+	tropézienne 38
+	pate briochée
+	crême (?)
 
-chaussons 44
-compote
+	chaussons 44
+	compote
 
-chinois 56
-2 pates briochées
-garniture_et_glacage_chinois
+	chinois 56
+	2 pates briochées
+	garniture_et_glacage_chinois
 
-escargots 64
-brioche pour escargots (pate briochée...) + ...
+	escargots 64
+	brioche pour escargots (pate briochée...) + ...
 
-streusel 66
-brioche + ...
-crumble
+	streusel 66
+	brioche + ...
+	crumble
 
 tarte à l'oignon 80
 preparation à l'oignon
@@ -48,11 +48,11 @@ glace vanille
 quiche lorraine 164
 appareil à omelette + lardons
 
-vol au vent 144
-poulet poché + ...
+	vol au vent 144
+	poulet poché + ...
 
-tourte au poulet 146
-pp+ pate feuilletée + pate brisée +...
+	tourte au poulet 146
+	pp+ pate feuilletée + pate brisée +...
 
 flammekueche 170
 pate brisée + préparation aux oignons + lardons, creme

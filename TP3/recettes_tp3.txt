@@ -1,3 +1,6 @@
+Les recettes indentées sont celles qui ne sont pas dans la
+base de règles !
+
 croissant 39
 pate à vienoiseries
 
@@ -90,11 +93,11 @@ profiterolles 280
 pâte à choux + crême patissiere
 glaçage vanillé
 
-flan patissier 252
-flan + pate brisée
+	flan patissier 252
+	flan + pate brisée
  
-baba au rhum 254
-brioche + sirop pour baba + creme chantilly
+	baba au rhum 254
+	brioche + sirop pour baba + creme chantilly
 
 crépes suzette 256
 pate à crepes + sirop pour suzette
@@ -104,19 +107,19 @@ creme anglaise + caramel + oeufs pochés pour iles flottantes
 
 religieuse au chocolat 276
 
-foret noire 286
+foret noire 286 ------> bien pour exemple !
 
-mousse au chocolat 294
-praliné croustillant
-biscuit pr gateau
-trianon 288
+	mousse au chocolat 294
+	praliné croustillant
+	biscuit pr gateau
+	trianon 288
 
-opéra 290
+	opéra 290
 
-poirier au choc 292
+	poirier au choc 292
 
-brownie marbré choco-ricotta 300
-(exemple phoyo !)
+brownie marbré choco-ricotta 300 ------> bien pour exemple !
+			(exemple photo !) m'enfin étage 3 tiré par les cheveux...
 
 cheesecxake 302
 

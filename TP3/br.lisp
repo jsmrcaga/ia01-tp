@@ -25,6 +25,22 @@
 	(+materiel moulin_a_cafe))
 	(sucre_glace 5))
 
+(glacage
+	((sucre_glace 100)
+		(eau 40))
+	(glacage 140))
+
+(glacage_vanille
+	((glacage 140)
+		(extrait_vanille 3))
+	(glacage_vanille 140))
+
+(glacage_chocolat
+	((lait 60)
+		(creme_au_beurre 500)
+		(chocolat_noir 120))
+	(glacage_chocolat 680))
+
 (pate_brisee_maison
 	((farine 250)
 		(beurre 125)
@@ -67,6 +83,14 @@
 		(+difficulte 2))
 	(creme_patissiere 500))
 
+(creme_patissiere_chocolat
+	((chocolat_noir 120)
+		(creme_patissiere 500)
+		(+t_preparation 5)
+		(+cout 1)
+		(+difficulte 2))
+	(creme_patissiere_chocolat 620))
+
 (pate_amande
 	((poudre_amandes 150)
 		(sucre_glace 150)
@@ -78,14 +102,22 @@
 	(pate_amande 300))
 
 (genoise
-	((oeuf 4)
-		(sucre 100)
-		(farine 100)
+	((oeuf 3)
+		(sucre 75)
+		(farine 75)
 		(extrait_vanille 5)
-		(+t_preparation 150)
+		(+t_preparation 15)
 		(+cout 1)
 		(+difficulte 2))
 	(genoise 1))
+
+(genoise_chocolat
+	((genoise 1)
+		(poudre_cacao_amer 25)
+		(+t_preparation 2)
+		(+cout 1)
+		(+difficulte 2))
+	(genoise_chocolat 1))
 
 (caramel_liquide
 	((sucre 250)
@@ -94,7 +126,7 @@
 		(+t_preparation 2)
 		(+cout 1)
 		(+difficulte 2))
-	(caramel_liquide 1)) ; quantité ? -> p21
+	(caramel_liquide 420)) ; quantité ? -> p21
 
 (beurre_maison
 	((creme_liquide 200)
@@ -274,8 +306,20 @@
 		(+difficulte 1))
 	(galettes_legumes 20))
 
-; XXX ratatouille !!
-
+(ratatouille
+	((aubergine 175)
+		(courgette 175)
+		(poivron 175)
+		(oignons 175)
+		(tomates 250)
+		(gousse_ail 2)
+		(huile_olive 60)
+		(brin_thym 1)
+		(feuille_laurier 1)
+		(+t_preparation 25)
+		(+cout 1)
+		(+difficulte 3))
+	(ratatouille 1000))
 
 (glace_vanille
 	((gousse_vanille 1)
@@ -290,7 +334,7 @@
 	(glace_vanille 1000))
 
 (vacherin
-	((chantilly 250)
+	((creme_chantilly 250)
 		(meringues 30)
 		(glace_vanille 1000)
 		(+materiel moule_rond)
@@ -324,9 +368,9 @@
 	(flammekueche 1))
 
 (pate_a_crepe
-	((oeuf 4)
-		(lait 500)
-		(farine 250)
+	((oeuf 2)
+		(lait 250)
+		(farine 125)
 		(+t_preparation 10)
 		(+cout 1)
 		(+difficulte 2)) ; XXX un peu difficile
@@ -334,7 +378,7 @@
 
 (ficelle_picarde
 	((sauce_bechamel 1)
-		(pate_a_crepe 1)
+		(pate_a_crepe 2)
 		(gruyere 50)
 		(champignon 150)
 		(tranches_jambon 3)
@@ -342,5 +386,239 @@
 		(+cout 1)
 		(+difficulte 1))
 	(ficelle_picarde 3))
+
+(appareil_clafoutis
+	((appareil_omelette 1)
+		(beurre 10)
+		(farine 130)
+		(lait 500)
+		(+t_preparation 5)
+		(+cout 1)
+		(+difficulte 2))
+	(appareil_clafoutis 1))
+
+(clafoutis_tomates_cerises
+	((creme_liquide 200)
+		(tomates_cerises 400)
+		(parmesan 50)
+		(appareil_clafoutis 1)
+		(+t_preparation 5)
+		(+cout 1)
+		(+difficulte 2))
+	(clafoutis_tomates_cerises 1))
+
+(clafoutis_cerises
+	((sucre 100)
+		(cerises 500)
+		(appareil_clafoutis 1)
+		(+t_preparation 5)
+		(+cout 1)
+		(+difficulte 2))
+	(clafoutis_cerises 1))
+
+(buchettes_fromage
+	((pate_feuilletee 1)
+		(jaune_oeuf 1)
+		(beurre 10)
+		(fromage 70)
+		(sauce_bechamel)
+		(maizena 5)
+		(+materiel rouleaux_en_fer pinceau_alimentaire)
+		(+t_preparation 30)
+		(+cout 1)
+		(+difficulte 2))
+	(buchettes_fromage 1))
+
+(puree
+	((pomme_de_terre 400)
+		(huile_olive 5)
+		(lait 150)
+		(+t_preparation 5)
+		(+cout 1)
+		(+difficulte 2))
+	(puree 400))
+
+(brandade_morue
+	((morue_salee 400)
+		(puree 400)
+		(gousse_ail 1)
+		(jus_citron 5)
+		(+t_preparation 10)
+		(+cout 1)
+		(+difficulte 2))
+	(brandade_morue 2))
+
+(mascarpone
+	((creme_liquide 500)
+		(jus_citron 30)
+		(+materiel thermometre_cuisine passoire gaze)
+		(+t_preparation 15)
+		(+cout 1)
+		(+difficulte )) ; XXX difficile
+	(mascarpone 500))
+
+(ricotta
+	((lait 1000)
+		(creme_liquide 100)
+		(jus_citron 30)
+		(sel 3)
+		(+materiel thermometre_cuisine passoire gaze)
+		(+t_preparation 20)
+		(+cout 1)
+		(+difficulte )) ; XXX difficile
+	(ricotta 300))
+
+(meringues
+	((blanc_oeuf 2)
+		(sucre 120)
+		(+materiel poche_a_douille batteur_electrique)
+		(+t_preparation 15)
+		(+cout 1)
+		(+difficulte 2))
+	(meringues 30))
+
+(biscuits_a_la_cuiller
+	((oeuf 3)
+		(farine 50)
+		(sucre 50)
+		(sucre_glace 60)
+		(+materiel poche_a_douille batteur_electrique)
+		(+t_preparation 10)
+		(+cout 1)
+		(+difficulte 2))
+	(biscuits_a_la_cuiller 25))
+
+(pate_a_choux
+	((eau 250)
+		(sucre 20)
+		(beurre 100)
+		(farine 150)
+		(oeuf 4)
+		(+t_preparation 15)
+		(+cout 1)
+		(+difficulte 2))
+	(pate_a_choux 500))
+
+(chouquettes
+	((grains_de_sucre 50)
+		(pate_a_choux 500)
+		(oeuf 1) ; pour la dorure
+		(+t_preparation 5)
+		(+cout 1)
+		(+difficulte 2))
+	(chouquettes 50))
+
+(eclairs_vanille
+	((pate_a_choux 500)
+		(creme_patissiere 500) ; fourrage vanille
+		(glace_vanille 140)
+		(oeuf 1) ; pour la dorure
+		(+materiel poche_a_douille plaque_de_four papier_sulfurise)
+		(+t_preparation 60)
+		(+cout 1)
+		(+difficulte )) ; XXX un peu difficile (<=> moyen ?)
+	(eclairs_vanille 20))
+
+(religieuse_au_chocolat
+	((glacage_chocolat 680)
+		(pate_a_choux 500)
+		(creme_patissiere_chocolat 620)
+		(+materiel poche_a_douille)
+		(+t_preparation 30)
+		(+cout 1)
+		(+difficulte )) ; XXX un peu difficile
+	(religieuse_au_chocolat 8))
+
+(profiteroles
+	((glace_vanille 1000)
+		(pate_a_choux 500)
+		(coulis_chocolat 500)
+		(+t_preparation 30)
+		(+cout 1)
+		(+difficulte )) ; XXX un peu difficile
+	(profiteroles 8))
+
+(sirop_orange
+	((orange 1)
+		(beurre 125)
+		(sucre 75)
+		(Grand_Marnier 80)
+		(+t_preparation 5)
+		(+cout 1)
+		(+difficulte 2))
+	(sirop_orange 400))
+
+(crepes_suzette
+	((pate_a_crepe 1)
+		(sucre 5)
+		(beurre 25)
+		(sirop_orange 400)
+		(+t_preparation 5)
+		(+cout 1)
+		(+difficulte 2))
+	(crepes_suzette 12))
+
+(iles_flottantes
+	((creme_anglaise 500)
+		(lait 250)
+		(blanc_oeuf 5)
+		(sucre 15)
+		(caramel_liquide 420)
+		(+materiel batteur_electrique coupelles)
+		(+t_preparation 15)
+		(+cout 1)
+		(+difficulte )) ; XXX difficile
+	(iles_flottantes 6))
+
+(tiramisu
+	((mascarpone 500)
+		(biscuits_a_la_cuiller 25)
+		(blanc_oeuf 3)
+		(jaune_oeuf 5)
+		(sucre 150)
+		(cafe 100)
+		(marsala 40)
+		(poudre_cacao_amer 10)
+		(+t_preparation 20)
+		(+cout 1)
+		(+difficulte 2))
+	(tiramisu 6))
+
+(foret_noire
+	((creme_chantilly 500)
+		(genoise_chocolat 2)
+		(cerises_au_sirop 800)
+		(kirsh 50)
+		(chocolat_noir 100)
+		(+materiel moule_a_manque)
+		(+t_preparation 50)
+		(+cout 1)
+		(+difficulte 2))
+	(foret_noire 8))
+
+(brownie_chocolat
+	((beurre 175)
+		(sucre 150)
+		(oeuf 2)
+		(farine 125)
+		(chocolat_noir 100)
+		(+materiel moule_carre)
+		(+t_preparation 10)
+		(+cout 1)
+		(+difficulte 2))
+	(brownie_chocolat 4))
+
+(brownie_marbré_chocolat_ricotta
+	((brownie_chocolat 4)
+		(ricotta 300)
+		(oeuf 1)
+		(sucre 40)
+		(+materiel moule_carre)
+		(+t_preparation 10)
+		(+cout 1)
+		(+difficulte 2))
+	(brownie_marbré_chocolat_ricotta 6))
+
+
 
 )

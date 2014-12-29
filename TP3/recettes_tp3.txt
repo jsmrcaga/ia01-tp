@@ -121,7 +121,7 @@ foret noire 286 ------> bien pour exemple !
 brownie marbré choco-ricotta 300 ------> bien pour exemple !
 			(exemple photo !) m'enfin étage 3 tiré par les cheveux...
 
-cheesecxake 302
+cheesecxake 302 ----------> 3 beaux étages !
 
 millefeuille 308
 pate feuilletée + creme patissiere + glacage
@@ -135,11 +135,11 @@ napolitain 328
 tarte aux fraises 350
 garniture + creme + pate sablée
 
-tarte bourdaloue 354
-pate sablee + creme d'amande + garniture
+	tarte bourdaloue 354
+	pate sablee + creme d'amande + garniture
 
-creme d'amande ?
-pate d'amande ?
+	creme d'amande ?
+pate d'amande
 
 tarte au citron meringuée
 

@@ -30,6 +30,12 @@
 		(eau 40))
 	(glacage 140))
 
+(glacage_a_millefeuille
+	((chocolat_noir 20)
+		(fondant_blanc 150)
+		(eau 20))
+	(glacage 170))
+
 (glacage_vanille
 	((glacage 140)
 		(extrait_vanille 3))
@@ -471,6 +477,7 @@
 (meringues
 	((blanc_oeuf 2)
 		(sucre 120)
+		(extrait_vanille 2)
 		(+materiel poche_a_douille batteur_electrique)
 		(+t_preparation 15)
 		(+cout 1)
@@ -537,6 +544,19 @@
 		(+cout 1)
 		(+difficulte )) ; XXX un peu difficile
 	(profiteroles 8))
+
+(paris_brest
+	((creme_patissiere 500)
+		(beurre 200)
+		(praline 120)
+		(pate_a_choux 500)
+		(oeuf 1)
+		(amandes_effilees 50)
+		(coulis_chocolat 500)
+		(+t_preparation 30)
+		(+cout 1)
+		(+difficulte )) ; XXX un peu difficile
+	(paris_brest 8))
 
 (sirop_orange
 	((orange 1)
@@ -618,6 +638,113 @@
 		(+cout 1)
 		(+difficulte 2))
 	(brownie_marbré_chocolat_ricotta 6))
+
+(biscuits_sables
+	((blanc_oeuf 1)
+		(extrait_vanille 3)
+		(sucre 40)
+		(pate_sablee 1)
+		(+materiel plaque_de_four)
+		(+t_preparation 20)
+		(+cout 1)
+		(+difficulte 1))
+	(biscuits_sables 50)) ; XXX attention ! yen a besoin que de 3 pr le cheesecake !
+
+(appareil_chocolat
+	((chocolat_noir 200)
+		(mascarpone 250) ; XXX 2x moins que la recette de base
+		(fromage_blanc 150)
+		(oeuf 4)
+		(sucre 100)
+		(noix_de_coco_rapee 50))
+	(appareil_chocolat 1))
+
+(base_croustillante_noix_de_coco
+	((biscuits_sables 8)
+		(noix_de_coco_rapee 45)
+		(beurre 90))
+	(base_croustillante_noix_de_coco 6))
+
+(cheesecake_chocolat_noix_de_coco
+	((base_croustillante_noix_de_coco 6)
+		(appareil_chocolat 1)
+		(+materiel moule_rond rouleau_a_patisserie)
+		(+t_preparation 25)
+		(+cout 1)
+		(+difficulte 2))
+	(cheesecake_chocolat_noix_de_coco 6))
+
+(millefeuille
+	((pate_feuilletee 1)
+		(creme_patissiere 500)
+		(glacage_a_millefeuille 170)
+		(+t_preparation 45)
+		(+cout 1)
+		(+difficulte )) ; XXX un peu difficile
+	(millefeuille 6))
+
+(sirop_framboise
+	((gelee_framboise 150)
+		(eau 200)
+		(liqueur_framboise 20))
+	(sirop_framboise 370))
+
+(framboisier
+	((creme_patissiere 500)
+		(genoise 1)
+		(sirop_framboise 370)
+		(framboises 200)
+		(pate_amande 200)
+		(+t_preparation 60)
+		(+cout 1)
+		(+difficulte )) ; XXX un peu difficile
+	(framboisier 8))
+
+(tarte_aux_fraises
+	((creme_patissiere 500)
+		(pate_sablee 1)
+		(fraises 500)
+		(gelee_fruits_rouges 50)
+		(eau 20)
+		(+materiel moule_a_tarte pinceau_alimentaire papier_sulfurise)
+		(+t_preparation 20)
+		(+cout 1)
+		(+difficulte 2))
+	(tarte_aux_fraises 8))
+
+(appareil_citron
+	((citron 4)
+		(maizena 15)
+		(sucre 250)
+		(oeuf 4)
+		(beurre 80))
+	(appareil_citron 1))
+
+(tarte_au_citron_meringuee
+	((pate_sablee 1)
+		(meringues 30)
+		(appareil_citron 1)
+		(+t_preparation 20)
+		(+cout 1)
+		(+difficulte 2))
+	(tarte_au_citron_meringuee 8))
+
+(tarte_a_la_rhubarbe_meringuee
+	((pate_sablee 1)
+		(meringues 30)
+		(rhubarbe 1000)
+		(sucre 110)
+		(oeuf 1)
+		(jaune_oeuf 1)
+		(creme_liquide 15)
+		(farine 15)
+		(+t_preparation 25)
+		(+cout 1)
+		(+difficulte 2))
+	(tarte_a_la_rhubarbe_meringuee 8))
+
+
+
 
 
 

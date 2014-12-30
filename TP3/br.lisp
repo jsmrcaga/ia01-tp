@@ -20,11 +20,6 @@
 	(+materiel moulin_a_cafe))
 	5)
 
-(glacage
-	((sucre_glace 100)
-		(eau 40))
-	140)
-
 (glacage_a_millefeuille
 	((chocolat_noir 20)
 		(fondant_blanc 150)
@@ -32,7 +27,8 @@
 	170)
 
 (glacage_vanille
-	((glacage 140)
+	((sucre_glace 100)
+		(eau 40)
 		(extrait_vanille 3))
 	140)
 
@@ -42,7 +38,7 @@
 		(chocolat_noir 120))
 	680)
 
-(pate_brisee_maison
+(pate_brisee
 	((farine 250)
 		(beurre 125)
 		(sel 1)
@@ -51,7 +47,7 @@
 		(+difficulte 1))
 	1)
 
-(pate_sablee_maison
+(pate_sablee
 	((farine 250)
 		(beurre 125)
 		(sel 1)
@@ -61,7 +57,7 @@
 		(+difficulte 2))
 	1)
 
-(pate_feuilletee_maison
+(pate_feuilletee
 	((farine 250)
 		(eau 152)
 		(sel 5)
@@ -120,7 +116,7 @@
 		(+difficulte 2))
 	(caramel_liquide 420)) ; quantité ? -> p21
 
-(beurre_maison
+(beurre
 	((creme_liquide 200)
 		(+materiel batteur_electrique passoire)
 		(+t_preparation 15)
@@ -142,16 +138,6 @@
 		(lait 100)
 		(creme_liquide 150)
 		(beurre 20)
-		(+t_preparation 10)
-		(+difficulte 2))
-	500)
-
-(coulis_framboise
-	((eau 200)
-		(sucre 150)
-		(framboises 450)
-		(jus_citron 20)
-		(+materiel blender passoire_fine)
 		(+t_preparation 10)
 		(+difficulte 2))
 	500)
@@ -182,15 +168,6 @@
 		(+t_preparation 15)
 		(+difficulte 2))
 	250)
-
-(confit_oignons
-	((oignons 6)
-		(sucre 100)
-		(vinaigre_balsamique 80)
-		(huile_olive 20)
-		(+t_preparation 10)
-		(+difficulte 2))
-	(confit_oignons 1)) ; XXX 1 pot ? c'est pas ouf précis ^^
 
 (pate_a_viennoiserie
 	((levure_boulanger 20)
@@ -498,7 +475,6 @@
 		(pate_a_choux 500)
 		(oeuf 1)
 		(amandes_effilees 50)
-		(coulis_chocolat 500)
 		(+t_preparation 30)
 		(+difficulte )) ; XXX un peu difficile
 	8)

@@ -1,7 +1,8 @@
 ; +t_preparation en minutes (sans compter cuisson ou refigération), cumulables
 ; +cout : ----> finalement, ne sert à rien
-; + difficulte : 1 très facile, 2 facile, X très difficile. Non-cumulable, on prend le maximum !
+; + difficulte : 1 très facile, 2 facile, 3 un peu difficile/moyen, 4 difficile. Non-cumulable, on prend le maximum !
 ; +materiel : le cdr de ce champs en la liste du matos nécessaire
+; +categorie : petit déj, entree, plat, gouter, dessert
 
 ; ingrédients solides en gr
 ; liquide en ml
@@ -63,7 +64,7 @@
 		(sel 5)
 		(sucre 185)
 		(+t_preparation 45)
-		(+difficulte )) ; XXX difficulté difficile ???
+		(+difficulte 4))
 	1)
 
 (creme_patissiere
@@ -148,7 +149,7 @@
 		(jaune_oeuf 3)
 		(beurre 125)
 		(+t_preparation 15)
-		(+difficulte )) ; XXX
+		(+difficulte 3))
 	500)
 
 (creme_chantilly
@@ -178,14 +179,15 @@
 		(eau 125)
 		(beurre 300)
 		(+t_preparation 80)
-		(+difficulte )) ; XXX
+		(+difficulte 4))
 	15)
 
 (croissants
 	((pate_a_viennoiserie 15)
 		(oeuf 1)
 		(+t_preparation 10)
-		(+difficulte 1))
+		(+difficulte 1)
+		(+categorie petit_dejeuner))
 	15)
 
 (pain_au_chocolat
@@ -193,7 +195,8 @@
 		(oeuf 1)
 		(chocolat_noir 300)
 		(+t_preparation 10)
-		(+difficulte 1))
+		(+difficulte 1)
+		(+categorie petit_dejeuner))
 	15)
 
 
@@ -213,7 +216,8 @@
 		(creme_liquide 200)
 		(noix_muscade 1)
 		(+t_preparation 15)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie entree))
 	1)
 
 (appareil_omelette
@@ -228,7 +232,8 @@
 		(preparation_a_loignon)
 		(huile_olive 5)
 		(+t_preparation 5)
-		(+difficulte 1))
+		(+difficulte 1
+		(+categorie plat)))
 	2)
 
 (appareil_galettes
@@ -247,14 +252,16 @@
 	((pomme_de_terre 500)
 		(appareil_galettes 20)
 		(+t_preparation 2)
-		(+difficulte 1))
+		(+difficulte 1)
+		(+categorie entree))
 	20)
 
 (galettes_legumes
 	((appareil_galettes 12)
 		(ratatouille 600)
 		(+t_preparation 2)
-		(+difficulte 1))
+		(+difficulte 1)
+		(+categorie entree))
 	20)
 
 (ratatouille
@@ -268,7 +275,8 @@
 		(brin_thym 1)
 		(feuille_laurier 1)
 		(+t_preparation 25)
-		(+difficulte 3))
+		(+difficulte 3)
+		(+categorie plat))
 	1000)
 
 (glace_vanille
@@ -279,7 +287,8 @@
 		(creme_liquide 150)
 		(+materiel sorbetiere moule_rond)
 		(+t_preparation 20)
-		(+difficulte )) ; XXX
+		(+difficulte 3)
+		(+categorie dessert))
 	1000)
 
 (vacherin
@@ -288,7 +297,8 @@
 		(glace_vanille 1000)
 		(+materiel moule_rond)
 		(+t_preparation 40)
-		(+difficulte )) ; XXX un peu difficile
+		(+difficulte 3)
+		(+categorie dessert))
 	1)
 
 (quiche_lorraine
@@ -299,7 +309,8 @@
 		(fromage 100)
 		(+materiel moule_a_tarte)
 		(+t_preparation 10)
-		(+difficulte 1)) ; XXX un peu difficile
+		(+difficulte 2)
+		(+categorie plat))
 	1)
 
 (flammekueche
@@ -310,7 +321,8 @@
 		(fromage 100)
 		(+materiel papier_sulfurise)
 		(+t_preparation 25)
-		(+difficulte 2)) ; XXX un peu difficile
+		(+difficulte 3)
+		(+categorie plat))
 	1)
 
 (pate_a_crepe
@@ -318,7 +330,8 @@
 		(lait 250)
 		(farine 125)
 		(+t_preparation 10)
-		(+difficulte 2)) ; XXX un peu difficile
+		(+difficulte 2)
+		(+categorie gouter))
 	1)
 
 (ficelle_picarde
@@ -328,7 +341,8 @@
 		(champignon 150)
 		(tranches_jambon 3)
 		(+t_preparation 10)
-		(+difficulte 1))
+		(+difficulte 1)
+		(+categorie plat))
 	3)
 
 (appareil_clafoutis
@@ -346,7 +360,8 @@
 		(parmesan 50)
 		(appareil_clafoutis 1)
 		(+t_preparation 5)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie plat))
 	1)
 
 (clafoutis_cerises
@@ -354,7 +369,8 @@
 		(cerises 500)
 		(appareil_clafoutis 1)
 		(+t_preparation 5)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	1)
 
 (buchettes_fromage
@@ -366,7 +382,8 @@
 		(maizena 5)
 		(+materiel rouleaux_en_fer pinceau_alimentaire)
 		(+t_preparation 30)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie plat))
 	1)
 
 (puree
@@ -374,7 +391,8 @@
 		(huile_olive 5)
 		(lait 150)
 		(+t_preparation 5)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie plat))
 	400)
 
 (brandade_morue
@@ -383,7 +401,8 @@
 		(gousse_ail 1)
 		(jus_citron 5)
 		(+t_preparation 10)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie plat))
 	2)
 
 (mascarpone
@@ -391,7 +410,8 @@
 		(jus_citron 30)
 		(+materiel thermometre_cuisine passoire gaze)
 		(+t_preparation 15)
-		(+difficulte )) ; XXX difficile
+		(+difficulte 4)
+		(+categorie fromage))
 	500)
 
 (ricotta
@@ -401,7 +421,8 @@
 		(sel 3)
 		(+materiel thermometre_cuisine passoire gaze)
 		(+t_preparation 20)
-		(+difficulte )) ; XXX difficile
+		(+difficulte 4)
+		(+categorie fromage))
 	300)
 
 (meringues
@@ -410,7 +431,8 @@
 		(extrait_vanille 2)
 		(+materiel poche_a_douille batteur_electrique)
 		(+t_preparation 15)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie gouter))
 	30)
 
 (biscuits_a_la_cuiller
@@ -420,7 +442,8 @@
 		(sucre_glace 60)
 		(+materiel poche_a_douille batteur_electrique)
 		(+t_preparation 10)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie gouter))
 	25)
 
 (pate_a_choux
@@ -438,7 +461,8 @@
 		(pate_a_choux 500)
 		(oeuf 1) ; pour la dorure
 		(+t_preparation 5)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie gouter))
 	50)
 
 (eclairs_vanille
@@ -448,24 +472,27 @@
 		(oeuf 1) ; pour la dorure
 		(+materiel poche_a_douille plaque_de_four papier_sulfurise)
 		(+t_preparation 60)
-		(+difficulte )) ; XXX un peu difficile (<=> moyen ?)
+		(+difficulte 3)
+		(+categorie gouter))
 	20)
 
 (religieuse_au_chocolat
 	((glacage_chocolat 680)
-		(pate_a_choux 500)
+		(chouquettes 50)
 		(creme_patissiere_chocolat 620)
 		(+materiel poche_a_douille)
 		(+t_preparation 30)
-		(+difficulte )) ; XXX un peu difficile
+		(+difficulte 3)
+		(+categorie dessert))
 	8)
 
 (profiteroles
 	((glace_vanille 1000)
-		(pate_a_choux 500)
+		(chouquettes 50)
 		(coulis_chocolat 500)
 		(+t_preparation 30)
-		(+difficulte )) ; XXX un peu difficile
+		(+difficulte 3)
+		(+categorie dessert))
 	8)
 
 (paris_brest
@@ -476,7 +503,8 @@
 		(oeuf 1)
 		(amandes_effilees 50)
 		(+t_preparation 30)
-		(+difficulte )) ; XXX un peu difficile
+		(+difficulte 3)
+		(+categorie dessert))
 	8)
 
 (sirop_orange
@@ -494,7 +522,8 @@
 		(beurre 25)
 		(sirop_orange 400)
 		(+t_preparation 5)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	12)
 
 (iles_flottantes
@@ -505,7 +534,8 @@
 		(caramel_liquide 420)
 		(+materiel batteur_electrique coupelles)
 		(+t_preparation 15)
-		(+difficulte )) ; XXX difficile
+		(+difficulte 4)
+		(+categorie dessert))
 	6)
 
 (tiramisu
@@ -518,7 +548,8 @@
 		(marsala 40)
 		(poudre_cacao_amer 10)
 		(+t_preparation 20)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	6)
 
 (foret_noire
@@ -529,7 +560,8 @@
 		(chocolat_noir 100)
 		(+materiel moule_a_manque)
 		(+t_preparation 50)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	8)
 
 (brownie_chocolat
@@ -540,7 +572,8 @@
 		(chocolat_noir 100)
 		(+materiel moule_carre)
 		(+t_preparation 10)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	4)
 
 (brownie_marbré_chocolat_ricotta
@@ -550,7 +583,8 @@
 		(sucre 40)
 		(+materiel moule_carre)
 		(+t_preparation 10)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	6)
 
 (biscuits_sables
@@ -560,7 +594,8 @@
 		(pate_sablee 1)
 		(+materiel plaque_de_four)
 		(+t_preparation 20)
-		(+difficulte 1))
+		(+difficulte 1)
+		(+categorie dessert))
 	(biscuits_sables 50)) ; XXX attention ! yen a besoin que de 3 pr le cheesecake !
 
 (appareil_chocolat
@@ -583,7 +618,8 @@
 		(appareil_chocolat 1)
 		(+materiel moule_rond rouleau_a_patisserie)
 		(+t_preparation 25)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	6)
 
 (millefeuille
@@ -591,7 +627,8 @@
 		(creme_patissiere 500)
 		(glacage_a_millefeuille 170)
 		(+t_preparation 45)
-		(+difficulte )) ; XXX un peu difficile
+		(+difficulte 3)
+		(+categorie dessert))
 	6)
 
 (sirop_framboise
@@ -607,7 +644,8 @@
 		(framboises 200)
 		(pate_amande 200)
 		(+t_preparation 60)
-		(+difficulte )) ; XXX un peu difficile
+		(+difficulte 3)
+		(+categorie dessert))
 	8)
 
 (tarte_aux_fraises
@@ -618,7 +656,8 @@
 		(eau 20)
 		(+materiel moule_a_tarte pinceau_alimentaire papier_sulfurise)
 		(+t_preparation 20)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	8)
 
 (appareil_citron
@@ -634,7 +673,8 @@
 		(meringues 30)
 		(appareil_citron 1)
 		(+t_preparation 20)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	8)
 
 (tarte_a_la_rhubarbe_meringuee
@@ -647,7 +687,8 @@
 		(creme_liquide 15)
 		(farine 15)
 		(+t_preparation 25)
-		(+difficulte 2))
+		(+difficulte 2)
+		(+categorie dessert))
 	8)
 
 

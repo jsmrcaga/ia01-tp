@@ -15,10 +15,24 @@
 
 (defun verifyFacts () 
 	(dolist (currentRecipe listOfRecipes)
+		
+		(if (member currentRecipe listOfFacts) () (
+			progn
 
-		(if (member ))
+				(dolist (currentIngredient (cadr currentRecipe)) 
+					(if (not (member currentIngredient listOfFacts))
+					(;then
+						(prin1 "Est-ce que vous possedez du ")
+						(princ currentIngredient)
+						(prin1 "?")
+						)
+					(;else
+						)
 
-		)
+					)	
+
+				)
+		))
 
 	)
 

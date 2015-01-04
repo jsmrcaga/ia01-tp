@@ -111,7 +111,7 @@
 
 							(if (equal answer "Y") 
 								(progn
-									(push currentIngredient currentItem)
+									
 									(print "Quelle quantite possedez-vous?")
 									(setq quantite (parse-integer (read-line)))
 									(setq currentItem (list quantite (car currentIngredient)))

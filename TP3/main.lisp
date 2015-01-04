@@ -97,8 +97,9 @@
 
 								;else
 								(progn
-										(setq allIngred NIL)
-										(return) ;on break le loop, pas besoin de continuer sur cette recette si pas l'ingredient
+									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
+										; (setq allIngred NIL)
+										; (return) ;on break le loop, pas besoin de continuer sur cette recette si pas l'ingredient
 									)
 								)
 

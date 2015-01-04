@@ -34,26 +34,33 @@
 		(answer NIL)
 		(currentItem NIL)
 		(quantite NIL)
+		(itemTemp NIL)
 		)
 
 			(dolist (current *BR*)
 				(setq allIngred T) ;on initialise allIngred pour tourner la boucle
-				(dolist (currentIngredient (cadr current)) ;on prend les ingredients de chaque recette
 
-					(if (not (equal NIL (assoc (car currentIngredient) *BF*)))
+				(dolist (currentIngredient (cadr current)) ;on prend les ingredients de chaque recette
+					(if  (not (equal NIL (assoc (car currentIngredient) *BF*)))
+						;Explication du if:
+
+							;si l'assoc retourne qq chose: l'ingredient existe dans la base de faits
 						;*******************
 						;	Si l'ingredient est dans la base de faits
 						;*******************
 						(progn
-							(if (>= (cadr (assoc (car currentIngredient) *BF*)) (cadr currentIngredient))
+							(if (>= (cadr (assoc (car currentIngredient) *BF*)) (cadr currentIngredient)) ;si la qtte est superieure a la regle
 								;on utilise cadr pour prendre la valeur numerique de quantite sans parentheses
 								(
 									;all good
 									)
 
-								(progn
-									(print "Vous n'avez pas assez de ")
-									(princ (car currentIngredient))
+
+								(
+										;PAS ASSEZ DE L'INGREDIENT
+									;(print "Vous n'avez pas assez de ")
+									;(princ (car currentIngredient))
+
 									(return) ;juste pour "break" le loop
 									)
 
@@ -68,6 +75,8 @@
 							(princ currentIngredient)
 							(princ "? Y/N")
 							(setq answer (read-line))
+
+							;check bonne reponse
 							(if (or (not (equal answer "Y")) (not (equal answer "N"))) 
 								(progn
 									(print "Seulement Y ou N")
@@ -82,16 +91,30 @@
 									(print "Quelle quantite possedez-vous?")
 									(setq quantite (read-line))
 									(push quantite currentItem)
-									; (push currentItem *BF*)
+									(setq quantite NIL)
+									(push currentItem *BF*)
 									)
 
 								;else
 								(progn
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
-										; (setq allIngred NIL)
-										; (return) ;on break le loop, pas besoin de continuer sur cette recette si pas l'ingredient
-									)
+										(if (not (equal NIL (assoc (car currentIngredient) *BR*))) ;donc s'il existe dans les recettes
+											
+											(verifyFacts (car currentIngredient))
+
+											(progn
+												(push 0 itemTemp)
+												(push (car currentIngredient)) itemTemp)
+												(push itemTemp *BF*)
+												(setq itemTemp NIL)
+												(setq allIngred NIL)
+												(return)
+												)
+
+											)
 								)
+							);FIN SI L'INGREDIENT NEST PAS DANS LA BASE DES FAITS
+					
 
 
 
@@ -100,6 +123,15 @@
 					)
 
 				)
+				;*************************************
+				;		FIN DEUXIEME DO LIST
+				;*************************************
+
+				(if (equal allIngred T)
+					(push (car current) *BF*)
+					)
+
+
 			)
 		)
 

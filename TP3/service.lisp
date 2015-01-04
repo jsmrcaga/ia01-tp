@@ -46,6 +46,28 @@
 				(push (reverse currentItem) *BF*)
 				)
 
+			)
+		
+			(print "Choisissez un ingredient en inserant le numero correspondant: ")
+			(push (cadr (assoc (parse-integer (read-line)) listOfItems)) selectedIngred)
+			;on utilise cadr pour recuperer le nom sans parentheses
+			;on parse le int lu de la ligne 
+
+			(print "Quelle quantite possedez-vous?")
+			(push (parse-integer (read-line)) selectedIngred)
+			(print "Ingredient Selectionne: ")
+			(princ selectedIngred)
+			(push selectedIngred *BF*)
+
+			(if (y-or-n-p "Ajouter un autre ingredient?")
+			    (progn
+	    			(getFirstIngredients)
+	    		)
+	  			
+			)
+
+		)
+
 			(setq currentItem NIL)
 		)
 	)

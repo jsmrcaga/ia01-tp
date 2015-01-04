@@ -24,6 +24,7 @@
 	(printExplanation)
 	(getFirstIngredients)
 	(askForLetter)
+	(askForDishFeatures)
 	;(beginExploration)
 
 )
@@ -61,7 +62,7 @@
 									;(print "Vous n'avez pas assez de ")
 									;(princ (car currentIngredient))
 
-									(return) ;juste pour "break" le loop
+									return ;juste pour "break" le loop
 									)
 
 								)
@@ -104,7 +105,7 @@
 
 											(progn
 												(push 0 itemTemp)
-												(push (car currentIngredient)) itemTemp)
+												(push (car currentIngredient) itemTemp)
 												(push itemTemp *BF*)
 												(setq itemTemp NIL)
 												(setq allIngred NIL)

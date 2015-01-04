@@ -47,29 +47,6 @@
 				)
 
 			)
-		
-			(print "Choisissez un ingredient en inserant le numero correspondant: ")
-			(push (cadr (assoc (parse-integer (read-line)) listOfItems)) selectedIngred)
-			;on utilise cadr pour recuperer le nom sans parentheses
-			;on parse le int lu de la ligne 
-
-			(print "Quelle quantite possedez-vous?")
-			(push (parse-integer (read-line)) selectedIngred)
-			(print "Ingredient Selectionne: ")
-			(princ selectedIngred)
-			(push selectedIngred *BF*)
-
-			(if (y-or-n-p "Ajouter un autre ingredient?")
-			    (progn
-	    			(getFirstIngredients)
-	    		)
-	  			
-			)
-
-		)
-
-			(setq currentItem NIL)
-		)
 	)
 )
 
@@ -94,5 +71,34 @@
 				)
 		))
 
+	)
+)
+
+(defun askForDishFeatures ()
+	(print "Vous cherchez... ")
+	(print "	1. un petit_dejeuner")
+	(print "	2. une entree")
+	(print "	3. un plat")
+	(print "	4. un fromage")
+	(print "	5. un gouter")
+	(print "	6. un dessert")
+	(print "	7. peu importe")
+	(let ((choice (parse-integer (read-line))))
+		(cond
+			((eq choice 1)
+				(push '(+categorie petit_dejeuner) *BF*))
+			((eq choice 2)
+				(push '(+categorie entree) *BF*))
+			((eq choice 3)
+				(push '(+categorie plat) *BF*))
+			((eq choice 4)
+				(push '(+categorie fromage) *BF*))
+			((eq choice 5)
+				(push '(+categorie gouter) *BF*))
+			((eq choice 6)
+				(push '(+categorie dessert) *BF*))
+			(T
+				(push '(+categorie tout) *BF*))
+		)
 	)
 )

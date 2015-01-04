@@ -34,12 +34,6 @@
 						(setq index (+ index 1))
 						(push (car currentIngredient) dejaUtilise)
 						)
-					; (progn
-					; 	(print (char lettre 0))
-					; 	(print (char (symbol-name (car currentIngredient)) 0))
-					; 	(print (not (member (car currentIngredient) dejaUtilise)))
-					; 	(print (not (equal (char "+" 0) (char (symbol-name (car currentIngredient)) 0))))
-					; 	)
 				)
 			)
 		)

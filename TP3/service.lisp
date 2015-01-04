@@ -41,10 +41,7 @@
 
 			; Push dans la BF
 			(princ (reverse currentItem))
-			(if (assoc (car (reverse currentItem)) *BF*)
-				(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree.")
-				(push (reverse currentItem) *BF*)
-				)
+			(add2BF (reverse currentItem))
 
 			(setq currentItem NIL)
 			)
@@ -118,16 +115,7 @@
 											
 											(progn
 												(if (equal (verifyFacts (car currentIngredient)) T) 
-													(progn
-														(if (assoc (car currentIngredient) *BF*)
-															(progn
-																(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. S123")
-																(print currentIngredient)
-															)
-															(push currentIngredient *BF*)
-															)
-														; (push currentIngredient *BF*)
-														)
+													(add2BF currentIngredient)
 													(progn
 														(setq allIngred NIL)
 														(print "On a pas de ")
@@ -138,14 +126,7 @@
 											(progn
 												(push 0 itemTemp)
 												(push (car currentIngredient) itemTemp)
-												(if (assoc (car itemTemp) *BF*)
-													(progn
-														(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. S142")
-														(print itemTemp)
-													)
-													(push itemTemp *BF*)
-													)
-												; (push itemTemp *BF*)
+												(add2BF itemTemp)
 												(setq itemTemp NIL)
 												(return-from verifyFacts NIL)
 											)
@@ -185,19 +166,19 @@
 	(let ((choice (parse-integer (read-line))))
 		(cond
 			((eq choice 1)
-				(push '(+categorie petit_dejeuner) *BF*))
+				(add2BF '(+categorie petit_dejeuner)))
 			((eq choice 2)
-				(push '(+categorie entree) *BF*))
+				(add2BF '(+categorie entree)))
 			((eq choice 3)
-				(push '(+categorie plat) *BF*))
+				(add2BF '(+categorie plat)))
 			((eq choice 4)
-				(push '(+categorie fromage) *BF*))
+				(add2BF '(+categorie fromage)))
 			((eq choice 5)
-				(push '(+categorie gouter) *BF*))
+				(add2BF '(+categorie gouter)))
 			((eq choice 6)
-				(push '(+categorie dessert) *BF*))
+				(add2BF '(+categorie dessert)))
 			(T
-				(push '(+categorie tout) *BF*))
+				(add2BF '(+categorie tout)))
 		)
 	)
 
@@ -210,13 +191,13 @@
 	(let ((choice (parse-integer (read-line))))
 		(cond
 			((eq choice 1)
-				(push '(+difficulte 1) *BF*))
+				(add2BF '(+difficulte 1)))
 			((eq choice 2)
-				(push '(+difficulte 2) *BF*))
+				(add2BF '(+difficulte 2)))
 			((eq choice 3)
-				(push '(+difficulte 3) *BF*))
+				(add2BF '(+difficulte 3)))
 			(T
-				(push '(+difficulte 4) *BF*))
+				(add2BF '(+difficulte 4)))
 		)
 	)
 
@@ -228,11 +209,11 @@
 	(let ((choice (parse-integer (read-line))))
 		(cond
 			((or (eq choice 1) (and (> choice 3)(<= 20)))
-				(push '(+t_preparation court) *BF*))
+				(add2BF '(+t_preparation court)))
 			((or (eq choice 2) (and (> choice 20)(< 40)))
-				(push '(+t_preparation moyen) *BF*))
+				(add2BF '(+t_preparation moyen)))
 			(T
-				(push '(+t_preparation long) *BF*))
+				(add2BF '(+t_preparation long)))
 		)
 	)
 )
@@ -261,11 +242,11 @@
 				; Push *BF*
 				(if (equal answer "Y")
 					(progn
-						(push (list (car ingredient) 1) *BF*)
+						(add2BF (list (car ingredient) 1))
 						(setq qte 1)
 					)
 					(progn
-						(push (list (car ingredient) 0) *BF*)
+						(add2BF (list (car ingredient) 0))
 						(setq qte 0)
 					)
 					)
@@ -286,7 +267,7 @@
 					(setq qte 0))
 
 				; push BF
-				(push (list (car ingredient) qte) *BF*)
+				(add2BF (list (car ingredient) qte))
 			)
 		)
 
@@ -336,11 +317,23 @@
 
 
 (defun add2BF (ingredient)
-	(if (assoc ingredient *BF*)
-	(progn
-		(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree !")
-		(print ingredient)
-	)
-	(push ingredient *BF*)
+	(if (listp ingredient)
+		(if (eq (length ingredient) 2)
+			(if (assoc (car ingredient) *BF*)
+				(progn
+					(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree !")
+					(print ingredient)
+				)
+				(push ingredient *BF*)
+			)
+			(progn
+				(print "Erreur, l'ingredient n'est pas de la forme (igredient qte)")
+				(print ingredient)
+			)
+		)
+		(progn
+			(print "Erreur, ingredient n'est pas une liste")
+			(print ingredient)
+		)
 	)
 )

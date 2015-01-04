@@ -113,7 +113,12 @@
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
 										(if (and (equal NIL (assoc (car currentIngredient) *BF*)) 
 											(not (equal NIL (assoc (car currentIngredient) *BR*)))
+<<<<<<< HEAD
+											)
+											 ;donc s'il existe dans les recettes et n'existe pas dans la BF
+=======
 											) ;donc s'il existe dans les recettes
+>>>>>>> 16e6b34f5e9611c358dd3ea30c21f8b1ffb60004
 											
 											(progn
 												(if (equal (verifyFacts (car currentIngredient)) T) 

@@ -75,6 +75,13 @@
 				(print "BF")
 				(print *BF*)
 				(read-line)
+				(if (not (equal NIL (assoc (car current) *BF*)) )
+					(progn
+						;***********************************************
+						;
+						;	ON TEST SI LA RECETTE COMPLETE EXISTE DEJA
+						;
+						;***********************************************
 				(dolist (currentIngredient (cadr current)) ;on prend les ingredients de chaque recette
 					(if (or (equal (string (symbol-name (car currentIngredient))) "+T_PREPARATION")
 							(equal (string (symbol-name (car currentIngredient))) "+DIFFICULTE")
@@ -126,7 +133,10 @@
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
 										(if (and (equal NIL (assoc (car currentIngredient) *BF*)) 
 											(not (equal NIL (assoc (car currentIngredient) *BR*)))
-											) ;donc s'il existe dans les recettes
+
+											);donc s'il existe dans les recettes
+
+
 											
 											(if (equal (verifyFacts (car currentIngredient)) T) 
 												(progn
@@ -204,6 +214,8 @@
 							)
 						;(push (list (car current) 0) *BF* )
 						)
+					)
+						);FIN TEST RECETTE COMPLETE
 					)
 
 

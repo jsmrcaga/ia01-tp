@@ -113,9 +113,9 @@
 								(progn
 									(push currentIngredient currentItem)
 									(print "Quelle quantite possedez-vous?")
-									(setq quantite (read-line))
+									(setq quantite (parse-int (read-line)))
 									(push quantite currentItem)
-									(push currentItem *BF*)
+									(push (reverse currentItem) *BF*)
 									(setq quantite NIL)
 								)
 

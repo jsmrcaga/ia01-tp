@@ -27,7 +27,7 @@
 	(getFirstIngredients)
 	(askForLetter)
 	(askForDishFeatures)
-	;(beginExploration)
+	(beginExploration)
 
 
 )
@@ -81,7 +81,7 @@
 							(setq answer (read-line))
 
 							;check bonne reponse
-							(if (or (not (equal answer "Y")) (not (equal answer "N"))) 
+							(if (and (not (equal answer "Y")) (not (equal answer "N"))) 
 								(progn
 									(print "Seulement Y ou N")
 									(setq answer (read-line))
@@ -93,9 +93,9 @@
 								(progn
 									(push (car currentIngredient) currentItem)
 									(print "Quelle quantite possedez-vous?")
-									(setq quantite (read-line))
+									(setq quantite (parse-int (read-line)))
 									(push quantite currentItem)
-									(push currentItem *BF*)
+									(push (reverse currentItem) *BF*)
 									(setq quantite NIL)
 								)
 

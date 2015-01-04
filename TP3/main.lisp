@@ -3,7 +3,9 @@
 ;Appareil => on ajoute des melanges "naturels" pour les recettes en tant que mini recettes.
 (setq ingBase '())
 (setq listeEnum ())
+(setq *BaseResult* NIL)
 (setq *BF* '((sel 10)(eau 20000)))
+
 
 
 ;Template listOfIngredients
@@ -57,12 +59,17 @@
 									)
 
 
-								(
+								(progn
 										;PAS ASSEZ DE L'INGREDIENT
 									;(print "Vous n'avez pas assez de ")
 									;(princ (car currentIngredient))
+<<<<<<< HEAD
 
 									return ;juste pour "break" le loop
+=======
+									(setq allIngred NIL)
+									(return) ;juste pour "break" le loop
+>>>>>>> 06e315b6b4a024a8d1e07fdb3cbd83b3e1352baf
 									)
 
 								)
@@ -92,16 +99,24 @@
 									(print "Quelle quantite possedez-vous?")
 									(setq quantite (read-line))
 									(push quantite currentItem)
-									(setq quantite NIL)
 									(push currentItem *BF*)
-									)
+									(setq quantite NIL)
+								)
 
-								;else
+								;else si la reponse est NON
 								(progn
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
 										(if (not (equal NIL (assoc (car currentIngredient) *BR*))) ;donc s'il existe dans les recettes
 											
-											(verifyFacts (car currentIngredient))
+											(if (equal (verifyFacts (car currentIngredient)) T) 
+												(progn
+														(push currentIngredient *BF*)
+														)
+												(
+													setq allIngred NIL
+													)
+
+												)
 
 											(progn
 												(push 0 itemTemp)
@@ -110,17 +125,17 @@
 												(setq itemTemp NIL)
 												(setq allIngred NIL)
 												(return)
-												)
-
 											)
+
+										)
 								)
-							);FIN SI L'INGREDIENT NEST PAS DANS LA BASE DES FAITS
+							)
 					
 
 
 
 
-						)
+						);FIN SI L'INGREDIENT NEST PAS DANS LA BASE DES FAITS
 					)
 
 				)

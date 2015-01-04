@@ -75,7 +75,7 @@
 				(print "BF")
 				(print *BF*)
 				(read-line)
-				(if (not (equal NIL (assoc (car current) *BF*)) )
+				(if (not (equal NIL (assoc (car current) *BF*)) ) ()
 					(progn
 						;***********************************************
 						;

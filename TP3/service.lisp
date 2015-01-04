@@ -19,58 +19,36 @@
 (defun getFirstIngredients () 
 
 	(let (
-		(dejaUtilise NIL)
-		(index 0)
 		(currentItem NIL)
 		(selectedIngred NIL)
-		(listOfItems NIL)
-		) ; fin dec var
+		(ingredBase '(
+			sucre
+			oeuf
+			farine
+			lait
+			beurre))
+		)
 
+		(print "Merci de donner le poids de chacun des ingredients suivant en votre possession (0 si vous n'en avez pas)")
+		(dolist (current ingredBase)
+			; On pose la question pour chaque ingrédient standard
+			(push current currentItem)
+			(print current)
+			(princ "? ")
 
-		(dolist (current *ingredBase*) 
-												
-				
-				(if (member (car current) dejaUtilise) () ;s'il nest pas deja utilise
-					(progn
-						(push (car current) currentItem)
-						(push index currentItem)
-						(push currentItem listOfItems)
-						(setq currentItem NIL)
-						(print index)
-        				(princ ": ")
-						(setq index (+ index 1))
-        				(princ (car current))
-						(push (car current) dejaUtilise)
-					)
+			; Réponse de l'utilisateur
+			(push (parse-integer (read-line)) currentItem)
+
+			; Push dans la BF
+			(princ (reverse currentItem))
+			(if (assoc (car (reverse currentItem)) *BF*)
+				(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree.")
+				(push (reverse currentItem) *BF*)
 				)
-				
-				
 
-				
-
-			)
-		
-			(print "Choisissez un ingredient en inserant le numero correspondant: ")
-			(push (cadr (assoc (parse-integer (read-line)) listOfItems)) selectedIngred)
-			;on utilise cadr pour recuperer le nom sans parentheses
-			;on parse le int lu de la ligne 
-
-			(print "Quelle quantite possedez-vous?")
-			(push (parse-integer (read-line)) selectedIngred)
-			(print "Ingredient Selectionne: ")
-			(princ selectedIngred)
-			; (push selectedIngred baseFaits)
-
-			(if (y-or-n-p "Ajouter un autre ingredient?")
-			    (progn
-	    			(getFirstIngredients)
-	    		)
-	  			
-			)
-
-		)		
-
-
+			(setq currentItem NIL)
+		)
+	)
 )
 
 (defun verifyFacts () 

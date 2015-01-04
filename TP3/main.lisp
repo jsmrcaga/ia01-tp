@@ -3,22 +3,9 @@
 ;Appareil => on ajoute des melanges "naturels" pour les recettes en tant que mini recettes.
 (setq ingBase '())
 (setq listeEnum ())
-(setq baseFaits NIL)
-(setq baseNonFaits NIL)
+(setq *BF* '((sel 10)(eau 20000)))
 
 
-(setq *ingredBase* '(
-	 (sucre)
-	 (oeuf)
-	 (sel)
-	 (poivre)
-	 (farine)
-	 (eau)
-	 (lait)
-
-
-	)
-)
 ;Template listOfIngredients
 
 ;********************************
@@ -53,12 +40,12 @@
 				(setq allIngred T) ;on initialise allIngred pour tourner la boucle
 				(dolist (currentIngredient (cadr current)) ;on prend les ingredients de chaque recette
 
-					(if (not (equal NIL (assoc (car currentIngredient) baseFaits)))
+					(if (not (equal NIL (assoc (car currentIngredient) *BF*)))
 						;*******************
 						;	Si l'ingredient est dans la base de faits
 						;*******************
 						(progn
-							(if (>= (cadr (assoc (car currentIngredient) baseFaits)) (cadr currentIngredient))
+							(if (>= (cadr (assoc (car currentIngredient) *BF*)) (cadr currentIngredient))
 								;on utilise cadr pour prendre la valeur numerique de quantite sans parentheses
 								(
 									;all good
@@ -95,7 +82,7 @@
 									(print "Quelle quantite possedez-vous?")
 									(setq quantite (read-line))
 									(push quantite currentItem)
-									; (push currentItem baseFaits)
+									; (push currentItem *BF*)
 									)
 
 								;else

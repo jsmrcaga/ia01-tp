@@ -13,6 +13,16 @@
 (load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/service.lisp")
 (load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/selector.lisp")
 
+
+(defun main ()
+
+	(printExplanation)
+	(getFirstIngredients)
+	
+
+)
+
+
 (defun verifyFacts () 
 	(dolist (currentRecipe *BR*)
 		
@@ -35,6 +45,7 @@
 		))
 
 	)
+)
 
 (defun getFirstIngredients () 
 

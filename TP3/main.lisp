@@ -1,20 +1,20 @@
-;Template des regles
-("Nom de la regle" ((qtteElement element) (qtteElement2 element2) (qtteElement3 element3)) "resultat")
-
 ;Recursivite sur les elements pour trouver les profondeurs des recettes
 ; + qtte des elements pour faire le 0+ du moteur
-;Appareil => on ajoute des melanges recursifs pour les recettes en tant que mini recettes.
-
+;Appareil => on ajoute des melanges "naturels" pour les recettes en tant que mini recettes.
+(setq ingBase '())
+(setq listeEnum ())
+(setq baseFaits NIL)
 ;Template listOfIngredients
-(defun getRecipe (listOfRecipes nameRecipe) 
 
-	(assoc nameRecipe listOfRecipes)
-
-	
-)
+;********************************
+;		CHANGER POUR PATH LOCAL
+;********************************
+(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/br.lisp")
+(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/service.lisp")
+(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/selector.lisp")
 
 (defun verifyFacts () 
-	(dolist (currentRecipe listOfRecipes)
+	(dolist (currentRecipe *BR*)
 		
 		(if (member currentRecipe listOfFacts) () (
 			progn
@@ -38,38 +38,55 @@
 
 (defun getFirstIngredients () 
 
+	(let (
+		(dejaUtilise NIL)
+		(index 0)
+		(currentItem NIL)
+		(selectedIngred NIL)
+		(listOfItems NIL)
+		) ; fin dec var
 
 
-	
+		(dolist (current *ingredBase*) 
+												
+				
+				(if (member (car current) dejaUtilise) () ;s'il nest pas deja utilise
+					(progn
+						(push (car current) currentItem)
+						(push index currentItem)
+						(push currentItem listOfItems)
+						(setq currentItem NIL)
+						(print index)
+        				(princ ": ")
+						(setq index (+ index 1))
+        				(princ (car current))
+						(push (car current) dejaUtilise)
+					)
+				)
+				
+				
 
-)
+				
 
-(defun printIngred (lettre)
-
-	(dolist (current listOfRecipes)
-
-		(dolist (currentIngredient (cadr current))
-
-			(if (eq lettre (char (cadr currentIngredient) 11))
-				(princ (cadr currentIngredient))
 			)
-			
+		
+			(print "Choisissez un ingredient en inserant le numero correspondant: ")
+			(push (cadr (assoc (parse-integer (read-line)) listOfItems)) selectedIngred)
+			;on utilise cadr pour recuperer le nom sans parentheses
+			;on parse le int lu de la ligne 
 
-			)
+			(print "Quelle quantite possedez-vous?")
+			(push (parse-integer (read-line)) selectedIngred)
+			(print "Ingredient Selectionne: ")
+			(princ selectedIngred)
+			; (push selectedIngred baseFaits)
 
-		)
-	
-)
+		)		
 
-(defun printExplanation () 
-
-	(print "Bienvenue au Systeme Expert de Cuisine!")
-	(print "Grace a ce systeme vous pourrez trouver des recettes a partir des ingredients que vous possedez et du temps que vous comptez consacrer a la preparation de la recette")
-	(print "Veuillez donc nous indiquer les ingredients que vous voulez choisir en commencant par taper la premiere lettre du nom")
-	(print "On vous proposera donc une liste d'ingredients, il suffira de taper le numero de lingredient correspondant")
-	(print "On vous demandera ensuite la qtte que vous en possedez, liquides en ml, solides en grammes, et autres en unites")
-
-	
 
 )
+
+
+
+
 

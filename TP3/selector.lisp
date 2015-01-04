@@ -24,7 +24,7 @@
 							(push currentItem listOfItems)
 							(setq currentItem NIL)
 							(print index)
-        					(princ " :")
+        					(princ ": ")
 							(setq index (+ index 1))
         					(princ (car currentIngredient))
 							(push (car currentIngredient) dejaUtilise)

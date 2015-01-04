@@ -66,7 +66,7 @@
 							(equal (string (symbol-name (car currentIngredient))) "+DIFFICULTE")
 							(equal (string (symbol-name (car currentIngredient))) "+CATEGORIE"))
 						(progn
-						
+							(print (string (symbol-name (car currentIngredient))))
 							(if (handleException currentIngredient) (return))
 						
 						)
@@ -111,26 +111,42 @@
 								;else si la reponse est NON
 								(progn
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
-										(if (not (equal NIL (assoc (car currentIngredient) *BR*))) ;donc s'il existe dans les recettes
+										(if (and (equal NIL (assoc (car currentIngredient) *BF*)) 
+											(not (equal NIL (assoc (car currentIngredient) *BR*)))
+											) ;donc s'il existe dans les recettes
 											
 											(progn
 												(if (equal (verifyFacts (car currentIngredient)) T) 
 													(progn
-														(push currentIngredient *BF*)
+														(if (assoc (car currentIngredient) *BF*)
+															(progn
+																(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. S123")
+																(print currentIngredient)
+															)
+															(push currentIngredient *BF*)
+															)
+														; (push currentIngredient *BF*)
 														)
-												(
-													setq allIngred NIL
-													)
-
+													(progn
+														(setq allIngred NIL)
+														(print "On a pas de ")
+														(princ currentIngredient))
 												)
 											)
 
 											(progn
 												(push 0 itemTemp)
 												(push (car currentIngredient) itemTemp)
-												(push itemTemp *BF*)
+												(if (assoc (car itemTemp) *BF*)
+													(progn
+														(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. S142")
+														(print itemTemp)
+													)
+													(push itemTemp *BF*)
+													)
+												; (push itemTemp *BF*)
 												(setq itemTemp NIL)
-												(return)
+												(return-from verifyFacts NIL)
 											)
 
 										)
@@ -265,6 +281,9 @@
 					(setq qte (parse-integer (read-line)))
 					)
 
+				(if (eq qte NIL)
+					(setq qte 0))
+
 				; push BF
 				(push (list (car ingredient) qte) *BF*)
 			)
@@ -292,7 +311,7 @@
 	)
 
 	(if (and (equal (string (symbol-name (car currentIngredient))) "+DIFFICULTE")
-		(< (cadr (assoc '+DIFFICULTE *BF*)) (cadr currentIngredient)) ;Si la difficulte est inferieure a celle de la recette
+		(> (cadr (assoc '+DIFFICULTE *BF*)) (cadr currentIngredient)) ;Si la difficulte est inferieure a celle de la recette
 		)
 		(progn 
 			(if (not (equal (cadr (assoc '+DIFFICULTE *BF*)) 4)) ; Si ce n'est pas 4 on quitte la boucle
@@ -312,19 +331,4 @@
 	)	
 
 )
-; (print "Possedez-vous ")
-; (princ (cadr currentIngredient))
-; (princ " de ")
-; (princ (car currentIngredient))
-; (princ "? Y/N")
-; (setq answer (read-line))
-
-; ;check bonne reponse SIMPLE
-; (if (and (not (equal answer "Y")) (not (equal answer "N"))) 
-; 	(progn
-; 		(print "Seulement Y ou N")
-; 		(setq answer (read-line))
-; 	)
-
-; )
 

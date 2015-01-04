@@ -1,10 +1,9 @@
 ;Recursivite sur les elements pour trouver les profondeurs des recettes
 ; + qtte des elements pour faire le 0+ du moteur
 ;Appareil => on ajoute des melanges "naturels" pour les recettes en tant que mini recettes.
-(setq ingBase '())
-(setq listeEnum ())
 (setq *BaseResult* NIL)
 (setq *BF* NIL)
+(setq *QuestionOk* NIL)
 
 
 
@@ -27,6 +26,23 @@
 	; (getFirstIngredients)
 	; (askForLetter)
 	; (askForDishFeatures)
+
+	(print "Voulez-vous qu'on vous demande s'il manque des ingrédients ? Y/N")
+	(let (answer)
+		(setq answer (read-line))
+
+		; Check reponse correcte
+		(loop while (and (not (equal answer "Y")) (not (equal answer "N"))) do
+				(print "Seulement Y ou N ")
+				(setq answer (read-line))
+			)
+
+		(if (equal answer "Y")
+			(setq *QuestionOk* T)
+			(setq *QuestionOk* NIL)
+		)
+	)
+
 	(setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 3) (+CATEGORIE DESSERT) (PATE_FEUILLETEE 1) (BEURRE 250) (LAIT 1000) (FARINE 500) (OEUF 12) (SUCRE 500) (SEL 10) (EAU 20000)))
 	(beginExploration)
 
@@ -117,7 +133,7 @@
 
 							(if (askQuestion currentIngredient) 
 								()
-								
+
 								;else si la reponse est NON
 								(progn
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
@@ -166,6 +182,7 @@
 					(progn
 						(push (list (car current) (car (cddr current))) *BF* )
 						)
+					((push (list (car current) 0) *BF* ))
 					)
 
 

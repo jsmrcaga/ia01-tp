@@ -53,23 +53,23 @@
 	
 )
 
-; (if (y-or-n-p "Do it?")
-;     (progn
-;       ;; code to do something here
-;     )
-;   (progn
-;     ;; code if user answered no.
-;   )
-; )
+(defun askForLetter ()
+	(let (
+		(letter NIL)
+		)
 
-(setq *ingredBase* '(
-	 (sucre)
-	 (oeuf)
-	 (sel)
-	 (poivre)
-	 (farine)
-	 (eau)
-	 (lait)
+			(print "Si vous avez d'autres ingredients a ajouter veuillez indiquer la premiere lettre de l'ingredient (en majuscules)")
+			(setq letter (read-line))
+			(printIngred letter)
+			(if (y-or-n-p "Ajouter un autre ingredient?")
+			    (progn
+	    			askForLetter()
+	    		)
+	  			
+			)
+
+		)
+
+	)
 
 
-	))

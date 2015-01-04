@@ -62,7 +62,7 @@
 			(print "Ingredient Selectionne: ")
 			(princ selectedIngred)
 			; (push selectedIngred baseFaits)
-
+			(askForLetter)
 		)		
 
 

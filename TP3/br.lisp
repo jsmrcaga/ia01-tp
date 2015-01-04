@@ -17,9 +17,9 @@
 ;	((jaune_oeuf 1)(blanc_oeuf 1))
 
 	(sucre_glace
-		((sucre 5)
+		((sucre 150)
 		(moulin_a_cafe 1))
-		5)
+		150)
 
 	(glacage_a_millefeuille
 		((chocolat_noir 20)
@@ -115,7 +115,7 @@
 			(eau 150)
 			(+t_preparation 2)
 			(+difficulte 2))
-		(caramel_liquide 420)) ; quantité ? -> p21
+		420) ; quantité ? -> p21
 
 	(beurre
 		((creme_liquide 200)

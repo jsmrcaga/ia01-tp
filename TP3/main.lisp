@@ -2,7 +2,7 @@
 ; + qtte des elements pour faire le 0+ du moteur
 ;Appareil => on ajoute des melanges "naturels" pour les recettes en tant que mini recettes.
 (setq *BaseResult* NIL)
-(setq *BF* NIL)
+(setq *BF* '((EAU 20000)(SEL 50)))
 (setq *QuestionOk* NIL)
 
 
@@ -43,8 +43,17 @@
 		)
 	)
 
-	(setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 3) (+CATEGORIE DESSERT) (PATE_FEUILLETEE 1) (BEURRE 250) (LAIT 1000) (FARINE 500) (OEUF 12) (SUCRE 500) (SEL 10) (EAU 20000)))
+	;(setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 2) (+CATEGORIE GOUTER) (GRAINS_DE_SUCRE 100) (BEURRE 500) (LAIT 500) (FARINE 500) (OEUF 500) (SUCRE 500) (EAU 20000) (SEL 50)))
+	(setq *BF* '((lait 500)
+			(gousse_vanille 1)
+			(jaune_oeuf 4)
+			(sucre 60)
+			(maizena 20)
+			(+t_preparation 15)
+			(+difficulte 2)))
+	(print *BF*)
 	(beginExploration)
+	(print *BF*)
 
 
 )
@@ -60,17 +69,29 @@
 
 			(dolist (current *BR*)
 				(setq allIngred T) ;on initialise allIngred pour tourner la boucle
-
+				(print "")
+				(print "recette")
+				(print current)
+				(print "BF")
+				(print *BF*)
+				(read-line)
+				(if (not (equal NIL (assoc (car current) *BF*)) )
+					(progn
+						;***********************************************
+						;
+						;	ON TEST SI LA RECETTE COMPLETE EXISTE DEJA
+						;
+						;***********************************************
 				(dolist (currentIngredient (cadr current)) ;on prend les ingredients de chaque recette
 					(if (or (equal (string (symbol-name (car currentIngredient))) "+T_PREPARATION")
 							(equal (string (symbol-name (car currentIngredient))) "+DIFFICULTE")
 							(equal (string (symbol-name (car currentIngredient))) "+CATEGORIE"))
 						(progn
+							(print (string (symbol-name (car currentIngredient))))
 							(if (handleException currentIngredient) (return))
 						)
 
 						(progn
-
 					(if  (not (equal NIL (assoc (car currentIngredient) *BF*)))
 						;Explication du if:
 
@@ -81,7 +102,7 @@
 						(progn
 							(if (>= (cadr (assoc (car currentIngredient) *BF*)) (cadr currentIngredient)) ;si la qtte est superieure a la regle
 								;on utilise cadr pour prendre la valeur numerique de quantite sans parentheses
-								(
+								(progn
 									;all good
 									(print "Il y a X et en qtte suffisante: ")
 									(princ currentIngredient)
@@ -90,8 +111,8 @@
 
 								(progn
 										;PAS ASSEZ DE L'INGREDIENT
-									;(print "Vous n'avez pas assez de ")
-									;(princ (car currentIngredient))
+									(print "Vous n'avez pas assez de ")
+									(princ (car currentIngredient))
 									(setq allIngred NIL)
 									(return) ;juste pour "break" le loop
 									)
@@ -112,11 +133,22 @@
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
 										(if (and (equal NIL (assoc (car currentIngredient) *BF*)) 
 											(not (equal NIL (assoc (car currentIngredient) *BR*)))
+
 											);donc s'il existe dans les recettes
+
+
 											
 											(if (equal (verifyFacts (car currentIngredient)) T) 
 												(progn
+
+													(if (assoc (car currentIngredient) *BF*)
+														(progn
+															(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. M123")
+															(print currentIngredient)
+														)
 														(push currentIngredient *BF*)
+														)
+														;(push currentIngredient *BF*)
 														)
 												(
 													setq allIngred NIL
@@ -127,7 +159,14 @@
 											(progn
 												(push 0 itemTemp)
 												(push (car currentIngredient) itemTemp)
-												(push itemTemp *BF*)
+												(if (assoc itemTemp *BF*)
+													(progn
+														(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. M141")
+														(print itemTemp)
+													)
+													(push itemTemp *BF*)
+													)
+												; (push itemTemp *BF*)
 												(setq itemTemp NIL)
 												(setq allIngred NIL)
 												(return)
@@ -155,9 +194,28 @@
 
 				(if (equal allIngred T)
 					(progn
-						(push (list (car current) (car (cddr current))) *BF* )
+
+						(if (assoc (car (list (car current) (car (cddr current)))) *BF*)
+							(progn
+								(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. M170")
+								(print (list (car current) (car (cddr current))))
+							)
+							(push (list (car current) (car (cddr current))) *BF*)
+							)
+						;(push (list (car current) (car (cddr current))) *BF* )
 						)
-					(push (list (car current) 0) *BF* )
+					(progn
+						(if (assoc (list (car current) 0) *BF*)
+							(progn
+								(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. M180")
+								(print (list (car current) 0))
+							)
+							(push (list (car current) 0) *BF*)
+							)
+						;(push (list (car current) 0) *BF* )
+						)
+					)
+						);FIN TEST RECETTE COMPLETE
 					)
 
 

@@ -44,13 +44,13 @@
 	)
 
 	;(setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 2) (+CATEGORIE GOUTER) (GRAINS_DE_SUCRE 100) (BEURRE 500) (LAIT 500) (FARINE 500) (OEUF 500) (SUCRE 500) (EAU 20000) (SEL 50)))
-	(setq *BF* '((lait 500)
-			(gousse_vanille 1)
-			(jaune_oeuf 4)
-			(sucre 60)
-			(maizena 20)
-			(+t_preparation 15)
-			(+difficulte 2)))
+	(setq *BF* '((base_croustillante_noix_de_coco 6)
+			(appareil_chocolat 1)
+			(moule_rond 1)
+			(rouleau_a_patisserie 1)
+			(+t_preparation MOYEN)
+			(+difficulte 2)
+			(+categorie dessert)))
 	(print *BF*)
 	(beginExploration)
 	(print *BF*)
@@ -69,13 +69,15 @@
 
 			(dolist (current *BR*)
 				(setq allIngred T) ;on initialise allIngred pour tourner la boucle
-				(print "")
-				(print "recette")
-				(print current)
-				(print "BF")
-				(print *BF*)
-				(read-line)
-				(if (not (equal NIL (assoc (car current) *BF*)) ) ()
+
+				; (print "")
+				; (print "recette")
+				; (print current)
+				; (print "BF")
+				; (print *BF*)
+				; (read-line)
+				(if (not (equal NIL (assoc (car current) *BF*)) )()
+
 					(progn
 						;***********************************************
 						;
@@ -138,35 +140,15 @@
 
 
 											
-											(if (equal (verifyFacts (car currentIngredient)) T) 
-												(progn
-
-													(if (assoc (car currentIngredient) *BF*)
-														(progn
-															(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. M123")
-															(print currentIngredient)
-														)
-														(push currentIngredient *BF*)
-														)
-														;(push currentIngredient *BF*)
-														)
-												(
-													setq allIngred NIL
-													)
-
-												)
+											(if (equal (verifyFacts (car currentIngredient)) T)
+												(add2BF currentIngredient)
+												(setq allIngred NIL)
+											)
 
 											(progn
 												(push 0 itemTemp)
 												(push (car currentIngredient) itemTemp)
-												(if (assoc itemTemp *BF*)
-													(progn
-														(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. M141")
-														(print itemTemp)
-													)
-													(push itemTemp *BF*)
-													)
-												; (push itemTemp *BF*)
+												(add2BF itemTemp)
 												(setq itemTemp NIL)
 												(setq allIngred NIL)
 												(return)
@@ -193,27 +175,8 @@
 				;*************************************
 
 				(if (equal allIngred T)
-					(progn
-
-						(if (assoc (car (list (car current) (car (cddr current)))) *BF*)
-							(progn
-								(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. M170")
-								(print (list (car current) (car (cddr current))))
-							)
-							(push (list (car current) (car (cddr current))) *BF*)
-							)
-						;(push (list (car current) (car (cddr current))) *BF* )
-						)
-					(progn
-						(if (assoc (list (car current) 0) *BF*)
-							(progn
-								(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. M180")
-								(print (list (car current) 0))
-							)
-							(push (list (car current) 0) *BF*)
-							)
-						;(push (list (car current) 0) *BF* )
-						)
+						(add2BF (list (car current) (car (cddr current))))
+						(add2BF (list (car current) 0))
 					)
 						);FIN TEST RECETTE COMPLETE
 					)

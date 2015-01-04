@@ -72,13 +72,3 @@
 		)
 
 	)
-
-(defun add2BF (ingredient)
-	(if (assoc ingredient *BF*)
-	(progn
-		(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree !")
-		(print ingredient)
-	)
-	(push ingredient *BF*)
-	)
-)

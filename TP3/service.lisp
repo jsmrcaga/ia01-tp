@@ -46,6 +46,7 @@
 				(push (reverse currentItem) *BF*)
 				)
 
+			(setq currentItem NIL)
 			)
 	)
 )
@@ -169,7 +170,7 @@
 	(print "	4. un fromage")
 	(print "	5. un gouter")
 	(print "	6. un dessert")
-	(print "	7. peu importe")
+	(print "	7. peu importe ")
 	(let ((choice (parse-integer (read-line))))
 		(cond
 			((eq choice 1)

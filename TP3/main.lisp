@@ -63,13 +63,8 @@
 										;PAS ASSEZ DE L'INGREDIENT
 									;(print "Vous n'avez pas assez de ")
 									;(princ (car currentIngredient))
-<<<<<<< HEAD
-
-									return ;juste pour "break" le loop
-=======
 									(setq allIngred NIL)
 									(return) ;juste pour "break" le loop
->>>>>>> 06e315b6b4a024a8d1e07fdb3cbd83b3e1352baf
 									)
 
 								)

@@ -24,9 +24,9 @@
 ;********************************
 ;		CHANGER POUR PATH LOCAL
 ;********************************
-(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/br.lisp")
-(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/service.lisp")
-(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/selector.lisp")
+(load "br.lisp") ; contient la variable globale *BR*
+(load "service.lisp")
+(load "selector.lisp")
 
 
 (defun main ()

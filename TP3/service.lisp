@@ -5,9 +5,7 @@
 	(print "Veuillez donc nous indiquer les ingredients que vous voulez choisir en commencant par taper la premiere lettre du nom")
 	(print "On vous proposera donc une liste d'ingredients, il suffira de taper le numero de lingredient correspondant")
 	(print "On vous demandera ensuite la qtte que vous en possedez, liquides en ml, solides en grammes, et autres en unites")
-
-	
-
+	NIL
 )
 
 (defun getRecipe (*BR* nameRecipe) 
@@ -76,7 +74,7 @@
 
 				(dolist (currentIngredient (cadr currentRecipe)) 
 					(if (not (member currentIngredient listOfFacts))
-					(;then
+					(progn ;then
 						(prin1 "Est-ce que vous possedez du ")
 						(princ currentIngredient)
 						(prin1 "?")

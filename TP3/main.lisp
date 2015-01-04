@@ -3,22 +3,11 @@
 ;Appareil => on ajoute des melanges "naturels" pour les recettes en tant que mini recettes.
 (setq ingBase '())
 (setq listeEnum ())
-(setq *BF* NIL)
 (setq *BaseResult* NIL)
+(setq *BF* '((sel 10)(eau 20000)))
 
 
-(setq *ingredBase* '(
-	 (sucre)
-	 (oeuf)
-	 (sel)
-	 (poivre)
-	 (farine)
-	 (eau)
-	 (lait)
 
-
-	)
-)
 ;Template listOfIngredients
 
 ;********************************
@@ -54,12 +43,10 @@
 				(setq allIngred T) ;on initialise allIngred pour tourner la boucle
 
 				(dolist (currentIngredient (cadr current)) ;on prend les ingredients de chaque recette
-
 					(if  (not (equal NIL (assoc (car currentIngredient) *BF*)))
 						;Explication du if:
 
 							;si l'assoc retourne qq chose: l'ingredient existe dans la base de faits
-
 						;*******************
 						;	Si l'ingredient est dans la base de faits
 						;*******************

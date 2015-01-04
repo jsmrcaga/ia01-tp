@@ -1,5 +1,5 @@
 (defun printIngred (lettre)
-	; retourne une liste (nom_ingred qté)
+	; ajoute un ingrédient à la *BF*
 
 	(let (
 		(dejaUtilise NIL) ; liste des ingrédients déjà affichés
@@ -11,27 +11,35 @@
 
 
 		(dolist (current *BR*) ;on prend la liste des recettes (regles) et on tourne dolist dessus (var current)
-
-			(dolist (currentIngredient (caadr current)) 	;on prend tous les nom d'ingredients de la recette actuelle (caadr current) 
+			(dolist (currentIngredient (cadr current)) 	;on prend tous les nom d'ingredients de la recette actuelle (caadr current) 
 															;et on tourne dessus pour afficher ceux qui commencent par la lettre indiquée
 				;TO DO:
-				;Enlenver le deuxieme \										
+				;Enlenver le deuxieme \
 				(if (and
 						; si currentIng (le nom de l'ingrédient) commence par la lettre cherchée
-						(equal lettre (string (char (symbol-name currentIngredient) 0))) ; 
+						(equal (char lettre 0) (char (symbol-name (car currentIngredient)) 0))
 						; et s'il nest pas deja utilise
-						(member currentIngredient dejaUtilise)) 
+						(not (member (car currentIngredient) dejaUtilise))
+						; et s'il ne commence pas par +
+						(not (equal (char "+" 0) (char (symbol-name (car currentIngredient)) 0)))
+						) 
 					(progn
-						(push currentIngredient currentItem)
+						(push (car currentIngredient) currentItem)
 						(push index currentItem)
 						(push currentItem listOfItems)
 						(setq currentItem NIL)
 						(print index)
     					(princ ": ")
-    					(princ currentIngredient)
+    					(princ (car currentIngredient))
 						(setq index (+ index 1))
-						(push currentIngredient dejaUtilise)
+						(push (car currentIngredient) dejaUtilise)
 						)
+					; (progn
+					; 	(print (char lettre 0))
+					; 	(print (char (symbol-name (car currentIngredient)) 0))
+					; 	(print (not (member (car currentIngredient) dejaUtilise)))
+					; 	(print (not (equal (char "+" 0) (char (symbol-name (car currentIngredient)) 0))))
+					; 	)
 				)
 			)
 		)
@@ -45,7 +53,10 @@
 		(push (parse-integer (read-line)) selectedIngred)
 		(print "Ingredient Selectionne: ")
 		(princ (reverse selectedIngred))
-		(push (reverse selectedIngred) *BF*)
+		(if (assoc (car (reverse selectedIngred)) *BF*)
+				(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree.")
+				(push (reverse selectedIngred) *BF*)
+				)
 	)
 )
 

@@ -106,15 +106,7 @@
 						(progn
 
 							(if (askQuestion currentIngredient) 
-								(progn
-									
-									(print "Quelle quantite possedez-vous?")
-									(setq quantite (parse-integer (read-line)))
-									(setq currentItem (list quantite (car currentIngredient)))
-									(push (reverse currentItem) *BF*)
-									(setq currentItem NIL)
-									(setq quantite NIL)
-								)
+								()
 
 								;else si la reponse est NON
 								(progn
@@ -229,25 +221,62 @@
 )
 
 (defun askQuestion (&optional ingredient)
-	(let (answer)
+	; demande si l'ingrédient est dans la possession de l'utilisateur
+	; ajoute l'information à la *BF*
+	; retourne T si il en possède, NIL sinon
+	; Attention ! Prérequis : ingredient NE FAIT PAS PARTIE DE *BF*
+	(let (answer qte)
 		(write-char #\space) ; retour à la ligne sans print
-		(princ "Possedez-vous du ")
-		(princ ingredient)
-		(princ "? Y/N ")
-		(setq answer (read-line))
 
-		; Check reponse correcte
-		(loop while (and (not (equal answer "Y")) (not (equal answer "N"))) do
-				(print "Seulement Y ou N ")
+		(if (eq (cadr ingredient) 1)
+			(progn
+				(princ "Possedez-vous un(e) ")
+				(princ (car ingredient))
+				(princ " ? Y/N ")
 				(setq answer (read-line))
-			)
 
-		(if (equal answer "Y")
+				; Check reponse correcte
+				(loop while (and (not (equal answer "Y")) (not (equal answer "N"))) do
+						(print "Seulement Y ou N ")
+						(setq answer (read-line))
+					)
+
+				; Push *BF*
+				(if (equal answer "Y")
+					(progn
+						(push (list (car ingredient) 1) *BF*)
+						(setq qte 1)
+					)
+					(progn
+						(push (list (car ingredient) 0) *BF*)
+						(setq qte 0)
+					)
+					)
+				)
+			(progn
+				(princ "Possedez-vous de la/du ")
+				(princ (car ingredient))
+				(princ " ? Indiquez une quantite ")
+				(setq qte (parse-integer (read-line)))
+
+				; Check reponse correcte
+				(loop while (< qte 0) do
+					(print "Rentrez un nombre positif svp ")
+					(setq qte (parse-integer (read-line)))
+					)
+
+				; push BF
+				(push (list (car ingredient) qte) *BF*)
+			)
+		)
+
+		(if (>= qte (cadr ingredient))
 			T
 			NIL
 		)
 	)
 )
+
 
 (defun handleException (currentIngredient)
 
@@ -298,3 +327,4 @@
 ; 	)
 
 ; )
+

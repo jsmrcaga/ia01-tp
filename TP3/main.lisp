@@ -87,16 +87,8 @@
 						(progn
 
 							(if (askQuestion currentIngredient) 
-								(progn
-									;(push (car currentIngredient) currentItem)
-									(print "Quelle quantite possedez-vous?")
-									(setq quantite (parse-integer (read-line)))
-									(setq currentItem (list quantite (car currentIngredient)))
-									(push (reverse currentItem) *BF*)
-									(setq currentItem NIL)
-									(setq quantite NIL)
-								)
-
+								()
+								
 								;else si la reponse est NON
 								(progn
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE

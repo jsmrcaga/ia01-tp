@@ -33,6 +33,7 @@
 
 	(printExplanation)
 	(getFirstIngredients)
+	(askForLetter)
 	(beginExploration)
 
 )

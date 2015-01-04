@@ -60,7 +60,14 @@
 			(print "Ingredient Selectionne: ")
 			(princ selectedIngred)
 			; (push selectedIngred baseFaits)
-			(askForLetter)
+
+			(if (y-or-n-p "Ajouter un autre ingredient?")
+			    (progn
+	    			(getFirstIngredients)
+	    		)
+	  			
+			)
+
 		)		
 
 

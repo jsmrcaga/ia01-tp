@@ -59,7 +59,7 @@
 			(printIngred letter)
 			(if (y-or-n-p "Ajouter un autre ingredient?")
 			    (progn
-	    			askForLetter()
+	    			(askForLetter)
 	    		)
 	  			
 			)

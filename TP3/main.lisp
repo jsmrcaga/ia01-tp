@@ -13,20 +13,21 @@
 ;********************************
 ;		CHANGER POUR PATH LOCAL
 ;********************************
-(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/br.lisp")
-(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/service.lisp")
-(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/selector.lisp")
-;(load "br.lisp")
-;(load "service.lisp")
-;(load "selector.lisp")
+; (load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/br.lisp")
+; (load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/service.lisp")
+; (load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/selector.lisp")
+(load "br.lisp")
+(load "service.lisp")
+(load "selector.lisp")
 
 
 (defun main ()
 
-	(printExplanation)
-	(getFirstIngredients)
-	(askForLetter)
-	(askForDishFeatures)
+	; (printExplanation)
+	; (getFirstIngredients)
+	; (askForLetter)
+	; (askForDishFeatures)
+	(setq *BF* '((+CATEGORIE DESSERT) (CHOCOLAT_NOIR 250) (PATE_FEUILLETEE 1) (BEURRE 250) (LAIT 500) (FARINE 500) (OEUF 6) (SUCRE 500) (SEL 10) (EAU 20000)))
 	(beginExploration)
 
 

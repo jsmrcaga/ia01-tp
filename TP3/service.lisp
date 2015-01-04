@@ -165,6 +165,7 @@
 )
 
 (defun askForDishFeatures ()
+	; Type de plat
 	(print "Vous cherchez... ")
 	(print "	1. un petit_dejeuner")
 	(print "	2. une entree")
@@ -189,6 +190,41 @@
 				(push '(+categorie dessert) *BF*))
 			(T
 				(push '(+categorie tout) *BF*))
+		)
+	)
+
+	; Difficulté de la réalisation
+	(print "Quelle difficulte souhaitez-vous au maximum ?")
+	(print "	1. tres facile")
+	(print "	2. facile")
+	(print "	3. moyen/un peu difficile")
+	(print "	4. difficile/peu importe")
+	(let ((choice (parse-integer (read-line))))
+		(cond
+			((eq choice 1)
+				(push '(+difficulte 1) *BF*))
+			((eq choice 2)
+				(push '(+difficulte 2) *BF*))
+			((eq choice 3)
+				(push '(+difficulte 3) *BF*))
+			(T
+				(push '(+difficulte 4) *BF*))
+		)
+	)
+
+	; Temps de preparation (+t_preparation 10)
+	(print "Quelle difficulte souhaitez-vous au maximum ?")
+	(print "	1. court (< 20 min)")
+	(print "	2. moyen (< 40 min)")
+	(print "	3. long")
+	(let ((choice (parse-integer (read-line))))
+		(cond
+			((or (eq choice 1) (and (> choice 3)(<= 20)))
+				(push '(+t_preparation court) *BF*))
+			((or (eq choice 2) (and (> choice 20)(< 40)))
+				(push '(+t_preparation moyen) *BF*))
+			(T
+				(push '(+t_preparation long) *BF*))
 		)
 	)
 )

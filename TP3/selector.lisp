@@ -73,12 +73,12 @@
 
 	)
 
-; (defun add2BF (ingredient)
-; 	(if (assoc (list (car current) 0) *BF*)
-; 	(progn
-; 		(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree. M180")
-; 		(print (list (car current) 0))
-; 	)
-; 	(push (list (car current) 0) *BF*)
-; 	)
-; )
+(defun add2BF (ingredient)
+	(if (assoc ingredient *BF*)
+	(progn
+		(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree !")
+		(print ingredient)
+	)
+	(push ingredient *BF*)
+	)
+)

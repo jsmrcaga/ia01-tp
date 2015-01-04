@@ -24,9 +24,9 @@
 ;********************************
 ;		CHANGER POUR PATH LOCAL
 ;********************************
-(load "br.lisp") ; contient la variable globale *BR*
-(load "service.lisp")
-(load "selector.lisp")
+(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/br.lisp")
+(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/service.lisp")
+(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/selector.lisp")
 
 
 (defun main ()
@@ -49,12 +49,29 @@
 				(setq allIngred T) ;on initialise allIngred pour tourner la boucle
 				(dolist (currentIngredient (cadr current)) ;on prend les ingredients de chaque recette
 
-					(if (member currentIngredient baseFaits) ;modifier pour associer (lsites avec quantites)
+					(if (not (equal NIL (assoc (car currentIngredient) baseFaits)))
+						;*******************
+						;	Si l'ingredient est dans la base de faits
+						;*******************
 						(progn
-							;TO DO
-							;tester la quantite
+							(if (>= (cadr (assoc (car currentIngredient) baseFaits)) (cadr currentIngredient))
+								;on utilise cadr pour prendre la valeur numerique de quantite sans parentheses
+								(
+									;all good
+									)
+
+								(
+									(print "Vous n'avez pas assez de ")
+									(princ (car currentIngredient))
+									(return) ;juste pour "break" le loop
+									)
+
+								)
 						)
 
+						;*******************
+						;	Si l'ingredient n'est pas dans la base de faits
+						;*******************
 						(progn
 							(print "Possedez-vous du ")
 							(princ currentIngredient)
@@ -80,6 +97,7 @@
 								;else
 								(progn
 										(setq allIngred NIL)
+										(return) ;on break le loop, pas besoin de continuer sur cette recette si pas l'ingredient
 									)
 								)
 

@@ -102,7 +102,7 @@
 						;*******************
 						(progn
 
-							(if (askQuestion currentIngredient) 
+							(if (and *QuestionOk* (askQuestion currentIngredient)) 
 								()
 
 								;else si la reponse est NON
@@ -153,7 +153,7 @@
 					(progn
 						(push (list (car current) (car (cddr current))) *BF* )
 						)
-					((push (list (car current) 0) *BF* ))
+					(push (list (car current) 0) *BF* )
 					)
 
 

@@ -105,7 +105,7 @@
 						;*******************
 						(progn
 
-							(if (askQuestion currentIngredient) 
+							(if (and *QuestionOk* (askQuestion currentIngredient))
 								()
 
 								;else si la reponse est NON

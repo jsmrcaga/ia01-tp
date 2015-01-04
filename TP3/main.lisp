@@ -66,36 +66,7 @@
 							(equal (string (symbol-name (car currentIngredient))) "+DIFFICULTE")
 							(equal (string (symbol-name (car currentIngredient))) "+CATEGORIE"))
 						(progn
-							(if (equal (string (symbol-name (car currentIngredient))) "+T_PREPARATION")
-								(cond
-									( (and (equal (string (cadr (assoc 'T_PREPARATION *BF*))) "COURT") (> (cadr currentIngredient) 20))
-										(return)
-									)
-									( (and (equal (string (cadr (assoc 'T_PREPARATION *BF*))) "MOYEN") (> (cadr currentIngredient) 40))
-										(return)
-									)
-								)
-							)
-
-							(if (and (equal (string (symbol-name (car currentIngredient))) "+DIFFICULTE")
-								(< (cadr (assoc '+DIFFICULTE *BF*)) (cadr currentIngredient)) ;Si la difficulte est inferieure a celle de la recette
-								)
-									(progn 
-										(if (not (equal (cadr (assoc '+DIFFICULTE *BF*)) 4)) ; Si ce n'est pas 4 on quitte la boucle
-											(return)
-											)
-										)
-								)
-
-							(if (and (equal (string (symbol-name (car currentIngredient))) "+CATEGORIE")
-									(not (equal (string (cadr (assoc '+CATEGORIE *BF*))) (string (cadr currentIngredient)))) ;Si la categorie n'est pas la meme
-								)
-									(progn 
-										(if (not (equal (string (cadr (assoc '+CATEGORIE *BF*))) "TOUT")) ; Si ce n'est pas tout on quitte la boucle
-											(return)
-											)
-									)
-							)	
+							(if (handleException currentIngredient) (return))
 						)
 
 						(progn

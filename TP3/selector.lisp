@@ -45,7 +45,7 @@
 		(push (parse-integer (read-line)) selectedIngred)
 		(print "Ingredient Selectionne: ")
 		(princ (reverse selectedIngred))
-		; (push selectedIngred baseFaits)
+		(push (reverse selectedIngred) *BF*)
 	)
 )
 

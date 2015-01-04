@@ -59,7 +59,7 @@
 			(push (parse-integer (read-line)) selectedIngred)
 			(print "Ingredient Selectionne: ")
 			(princ selectedIngred)
-			; (push selectedIngred baseFaits)
+			(push selectedIngred *BF*)
 
 			(if (y-or-n-p "Ajouter un autre ingredient?")
 			    (progn

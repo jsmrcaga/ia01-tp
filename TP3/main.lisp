@@ -27,7 +27,7 @@
 	; (getFirstIngredients)
 	; (askForLetter)
 	; (askForDishFeatures)
-	(setq *BF* '((+CATEGORIE DESSERT) (CHOCOLAT_NOIR 250) (PATE_FEUILLETEE 1) (BEURRE 250) (LAIT 500) (FARINE 500) (OEUF 6) (SUCRE 500) (SEL 10) (EAU 20000)))
+	(setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 3) (+CATEGORIE DESSERT) (PATE_FEUILLETEE 1) (BEURRE 250) (LAIT 1000) (FARINE 500) (OEUF 12) (SUCRE 500) (SEL 10) (EAU 20000)))
 	(beginExploration)
 
 
@@ -76,21 +76,8 @@
 						;	Si l'ingredient n'est pas dans la base de faits
 						;*******************
 						(progn
-							(print "Possedez-vous du ")
-							(princ currentIngredient)
-							(princ "? Y/N")
-							(setq answer (read-line))
 
-							;check bonne reponse
-							(if (and (not (equal answer "Y")) (not (equal answer "N"))) 
-								(progn
-									(print "Seulement Y ou N")
-									(setq answer (read-line))
-								)
-
-							)
-
-							(if (equal answer "Y") 
+							(if (askQuestion currentIngredient) 
 								(progn
 									;(push (car currentIngredient) currentItem)
 									(print "Quelle quantite possedez-vous?")

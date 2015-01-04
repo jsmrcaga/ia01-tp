@@ -93,23 +93,8 @@
 						;	Si l'ingredient n'est pas dans la base de faits
 						;*******************
 						(progn
-							(print "Possedez-vous ")
-							(princ (cadr currentIngredient))
-							(princ " de ")
-							(princ (car currentIngredient))
-							(princ "? Y/N")
-							(setq answer (read-line))
 
-							;check bonne reponse SIMPLE
-							(if (and (not (equal answer "Y")) (not (equal answer "N"))) 
-								(progn
-									(print "Seulement Y ou N")
-									(setq answer (read-line))
-								)
-
-							)
-
-							(if (equal answer "Y") 
+							(if (askQuestion currentIngredient) 
 								(progn
 									
 									(print "Quelle quantite possedez-vous?")
@@ -229,3 +214,41 @@
 		)
 	)
 )
+
+(defun askQuestion (&optional ingredient)
+	(let (answer)
+		(write-char #\space) ; retour à la ligne sans print
+		(princ "Possedez-vous du ")
+		(princ ingredient)
+		(princ "? Y/N ")
+		(setq answer (read-line))
+
+		; Check reponse correcte
+		(loop while (and (not (equal answer "Y")) (not (equal answer "N"))) do
+				(print "Seulement Y ou N ")
+				(setq answer (read-line))
+			)
+
+		(if (equal answer "Y")
+			T
+			NIL
+		)
+	)
+)
+
+
+; (print "Possedez-vous ")
+; (princ (cadr currentIngredient))
+; (princ " de ")
+; (princ (car currentIngredient))
+; (princ "? Y/N")
+; (setq answer (read-line))
+
+; ;check bonne reponse SIMPLE
+; (if (and (not (equal answer "Y")) (not (equal answer "N"))) 
+; 	(progn
+; 		(print "Seulement Y ou N")
+; 		(setq answer (read-line))
+; 	)
+
+; )

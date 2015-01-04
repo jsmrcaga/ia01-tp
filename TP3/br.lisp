@@ -381,7 +381,7 @@
 			(jaune_oeuf 1)
 			(beurre 10)
 			(fromage 70)
-			(sauce_bechamel)
+			(sauce_bechamel 1)
 			(maizena 5)
 			(rouleaux_en_fer 1)
 			(pinceau_alimentaire 1)

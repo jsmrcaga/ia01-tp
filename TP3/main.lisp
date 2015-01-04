@@ -97,6 +97,7 @@
 									(setq quantite (parse-integer (read-line)))
 									(setq currentItem (list quantite (car currentIngredient)))
 									(push (reverse currentItem) *BF*)
+									(setq currentItem NIL)
 									(setq quantite NIL)
 								)
 
@@ -141,7 +142,9 @@
 				;*************************************
 
 				(if (equal allIngred T)
-					(push (car current) *BF*)
+					(progn
+						(push (list (car current) (car (cddr current))) *BF* )
+						)
 					)
 
 

@@ -116,6 +116,7 @@
 									(setq quantite (parse-integer (read-line)))
 									(push quantite currentItem)
 									(push (reverse currentItem) *BF*)
+									(setq currentItem NIL)
 									(setq quantite NIL)
 								)
 

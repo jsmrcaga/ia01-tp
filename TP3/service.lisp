@@ -111,7 +111,10 @@
 								;else si la reponse est NON
 								(progn
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
-										(if (not (equal NIL (assoc (car currentIngredient) *BR*))) ;donc s'il existe dans les recettes
+										(if (and (equal NIL (assoc (car currentIngredient) *BF*)) 
+											(not (equal NIL (assoc (car currentIngredient) *BR*)))
+											)
+											 ;donc s'il existe dans les recettes et n'existe pas dans la BF
 											
 											(progn
 												(if (equal (verifyFacts (car currentIngredient)) T) 
@@ -130,7 +133,7 @@
 												(push (car currentIngredient) itemTemp)
 												(push itemTemp *BF*)
 												(setq itemTemp NIL)
-												(return)
+												(return-from verifyFacts NIL)
 											)
 
 										)

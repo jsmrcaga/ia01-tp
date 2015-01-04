@@ -4,7 +4,7 @@
 (setq ingBase '())
 (setq listeEnum ())
 (setq *BF* NIL)
-(setq baseNonFaits NIL)
+(setq *BaseResult* NIL)
 
 
 (setq *ingredBase* '(
@@ -71,11 +71,11 @@
 									)
 
 
-								(
+								(progn
 										;PAS ASSEZ DE L'INGREDIENT
 									;(print "Vous n'avez pas assez de ")
 									;(princ (car currentIngredient))
-
+									(setq allIngred NIL)
 									(return) ;juste pour "break" le loop
 									)
 
@@ -106,35 +106,43 @@
 									(print "Quelle quantite possedez-vous?")
 									(setq quantite (read-line))
 									(push quantite currentItem)
-									(setq quantite NIL)
 									(push currentItem *BF*)
-									)
+									(setq quantite NIL)
+								)
 
-								;else
+								;else si la reponse est NON
 								(progn
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
 										(if (not (equal NIL (assoc (car currentIngredient) *BR*))) ;donc s'il existe dans les recettes
 											
-											(verifyFacts (car currentIngredient))
+											(if (equal (verifyFacts (car currentIngredient)) T) 
+												(progn
+														(push currentIngredient *BF*)
+														)
+												(
+													setq allIngred NIL
+													)
+
+												)
 
 											(progn
 												(push 0 itemTemp)
-												(push (car currentIngredient)) itemTemp)
+												(push (car currentIngredient) itemTemp)
 												(push itemTemp *BF*)
 												(setq itemTemp NIL)
 												(setq allIngred NIL)
 												(return)
-												)
-
 											)
+
+										)
 								)
-							);FIN SI L'INGREDIENT NEST PAS DANS LA BASE DES FAITS
+							)
 					
 
 
 
 
-						)
+						);FIN SI L'INGREDIENT NEST PAS DANS LA BASE DES FAITS
 					)
 
 				)

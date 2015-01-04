@@ -115,8 +115,10 @@
 						;	Si l'ingredient n'est pas dans la base de faits
 						;*******************
 						(progn
-							(print "Possedez-vous du ")
-							(princ currentIngredient)
+							(print "Possedez-vous ")
+							(princ (cadr currentIngredient))
+							(princ " de ")
+							(princ (car currentIngredient))
 							(princ "? Y/N")
 							(setq answer (read-line))
 

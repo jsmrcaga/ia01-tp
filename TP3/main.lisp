@@ -4,7 +4,7 @@
 (setq ingBase '())
 (setq listeEnum ())
 (setq *BaseResult* NIL)
-(setq *BF* '((sel 10)(eau 20000)))
+(setq *BF* '((sel 10)(eau 20000)) )
 
 
 
@@ -13,12 +13,12 @@
 ;********************************
 ;		CHANGER POUR PATH LOCAL
 ;********************************
-; (load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/br.lisp")
-; (load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/service.lisp")
-; (load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/selector.lisp")
-(load "br.lisp")
-(load "service.lisp")
-(load "selector.lisp")
+(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/br.lisp")
+(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/service.lisp")
+(load "C:/Users/Jo Colina/Documents/UTC/IA01/ia01-tp/TP3/selector.lisp")
+;(load "br.lisp")
+;(load "service.lisp")
+;(load "selector.lisp")
 
 
 (defun main ()
@@ -26,7 +26,7 @@
 	(printExplanation)
 	(getFirstIngredients)
 	(askForLetter)
-	;(beginExploration)
+	(beginExploration)
 
 )
 

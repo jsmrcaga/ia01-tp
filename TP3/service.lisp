@@ -101,7 +101,7 @@
 							(setq answer (read-line))
 
 							;check bonne reponse SIMPLE
-							(if (or (not (equal answer "Y")) (not (equal answer "N"))) 
+							(if (and (not (equal answer "Y")) (not (equal answer "N"))) 
 								(progn
 									(print "Seulement Y ou N")
 									(setq answer (read-line))
@@ -114,7 +114,7 @@
 									(push currentIngredient currentItem)
 									(print "Quelle quantite possedez-vous?")
 									(setq quantite (parse-integer (read-line)))
-									(push quantite currentItem)
+									(setq currentItem (list quantite (car currentIngredient)))
 									(push (reverse currentItem) *BF*)
 									(setq currentItem NIL)
 									(setq quantite NIL)

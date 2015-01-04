@@ -18,7 +18,7 @@
 
 	(sucre_glace
 		((sucre 5)
-		(+materiel moulin_a_cafe))
+		(moulin_a_cafe 1))
 		5)
 
 	(glacage_a_millefeuille

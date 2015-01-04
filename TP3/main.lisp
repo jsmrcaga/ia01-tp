@@ -26,7 +26,9 @@
 	(printExplanation)
 	(getFirstIngredients)
 	(askForLetter)
-	(beginExploration)
+	(askForDishFeatures)
+	;(beginExploration)
+
 
 )
 
@@ -89,7 +91,7 @@
 
 							(if (equal answer "Y") 
 								(progn
-									(push currentIngredient currentItem)
+									(push (car currentIngredient) currentItem)
 									(print "Quelle quantite possedez-vous?")
 									(setq quantite (read-line))
 									(push quantite currentItem)

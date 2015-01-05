@@ -609,7 +609,7 @@
 			(+t_preparation 20)
 			(+difficulte 1)
 			(+categorie dessert))
-		(biscuits_sables 50)) ; XXX attention ! yen a besoin que de 3 pr le cheesecake !
+		50) ; XXX attention ! yen a besoin que de 3 pr le cheesecake !
 
 	(appareil_chocolat
 		((chocolat_noir 200)

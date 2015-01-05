@@ -66,7 +66,7 @@
 	(print *BF*)
 	(beginExploration)
 	(print *BF*)
-
+	(showFinishedRecipes)
 
 )
 

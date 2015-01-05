@@ -43,7 +43,7 @@
 		)
 	)
 
-	(setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 2) (+CATEGORIE GOUTER) (GRAINS_DE_SUCRE 100) (BEURRE 500) (LAIT 500) (FARINE 500) (OEUF 500) (SUCRE 500) (EAU 20000) (SEL 50)))
+	; (setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 2) (+CATEGORIE GOUTER) (GRAINS_DE_SUCRE 100) (BEURRE 500) (LAIT 500) (FARINE 500) (OEUF 500) (SUCRE 500) (EAU 20000) (SEL 50)))
 	; (setq *BF* '((EAU 20000)(SEL 50)(blanc_oeuf 1)
 	; 		(extrait_vanille 5)
 	; 		(sucre 150)
@@ -68,6 +68,9 @@
 	; 		(+t_preparation LONG)
 	; 		(+difficulte 4)
 	; 		(+categorie tout)))
+	(setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 2) (+CATEGORIE TOUT) 
+(GRAINS_DE_SUCRE 100) (BEURRE 500) (LAIT 500) (FARINE 500)
+(OEUF 500) (SUCRE 500) (EAU 20000) (SEL 50)))
 
 	(print "Voici la base de faits actuelle : ")
 	(print *BF*)
@@ -81,6 +84,7 @@
 
 (defun beginExploration ()
 
+	(print "Moteur d'inference en fonctionnement...")
 	(dolist (current *BR*)
 
 		(if (not (equal NIL (assoc (car current) *BF*))) ()

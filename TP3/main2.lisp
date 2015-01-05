@@ -73,12 +73,10 @@
 (defun beginExploration ()
 
 	(dolist (current *BR*)
-		
-
 
 		; (print "")
-		(print "recette")
-		(print current)
+		; (print "recette")
+		; (print current)
 		; (print "BF")
 		; (print *BF*)
 		; (read-line)
@@ -93,10 +91,10 @@
 				(progn
 					(add2BF (list (car current) (caddr current)))
 				)
-				(progn
-					(add2BF (list (car current) 0))
-				)
-
+				(add2BF (list (car current) 0))
+			)
+		)
+	)
 )
 
 

@@ -231,7 +231,7 @@
 
 	(omelette_aux_oignons
 		((appareil_omelette 1)
-			(preparation_a_loignon)
+			(preparation_a_loignon 1)
 			(huile_olive 5)
 			(+t_preparation 5)
 			(+difficulte 1

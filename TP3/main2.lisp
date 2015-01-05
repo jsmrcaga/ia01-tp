@@ -88,7 +88,9 @@
 								(progn
 									(add2BF (list (car current) (caddr current)))
 									)
-
+								(progn
+									(add2BF (list (car current) 0))
+									)
 								)
 						);FIN TEST RECETTE COMPLETE
 

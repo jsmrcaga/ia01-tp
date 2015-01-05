@@ -57,7 +57,6 @@
 
 	(setq allIngred T)
 	(dolist (currentIngredient (cadr (assoc ingredient *BR*)))
-
 		(if (or (equal (string (symbol-name (car currentIngredient))) "+T_PREPARATION")
 							(equal (string (symbol-name (car currentIngredient))) "+DIFFICULTE")
 							(equal (string (symbol-name (car currentIngredient))) "+CATEGORIE"))
@@ -100,11 +99,10 @@
 						;	Si l'ingredient n'est pas dans la base de faits
 						;*******************
 						(progn
-
 							(if (and *QuestionOk* (askQuestion currentIngredient))
 								()
 
-								;else si la reponse est NON
+								;else si la reponse est NON (= il n'y en a pas assez / on ne pose pas la question)
 								(progn
 									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
 										(if (and (equal NIL (assoc (car currentIngredient) *BF*)) 

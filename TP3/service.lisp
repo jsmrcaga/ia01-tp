@@ -320,7 +320,7 @@
 				(progn
 
 					(push ingredient *BF*)
-					(if (assoc '+CATEGORIE (cadr (assoc (car ingredient) *BR*))) 
+					(if (and (assoc '+CATEGORIE (cadr (assoc (car ingredient) *BR*))) (not (eq (cadr ingredient) 0)))
 						(push (car ingredient) *BaseResult*)
 					)
 				)
@@ -363,7 +363,7 @@
 
 	(setq subRecipes (searchIngredients recipeChosen))
 	(push recipeChosen subRecipes)
-
+	(print subRecipes)
 	(dolist (currentRecipe subRecipes)
 		(print "Pour faire ")
 		(princ currentRecipe)
@@ -381,21 +381,20 @@
 (defun searchIngredients (recipe)
 	(let (
 		(tempList NIL)
-		(temp NIL)
 		)
 
 		(dolist (currentIngredient (cadr (assoc recipe *BR*)))
 			(if (assoc (car currentIngredient) *BR*)
 				(progn
-					(setq temp (searchIngredients (car currentIngredient)))
-					(if temp
-						(append temp tempList)
-					)
+
 					(push (car currentIngredient) tempList)
+					(push (cadr (searchIngredients (car currentIngredient))) tempList)
+
 				)
 			)
-
 		)
-		(return-from searchIngredients tempList)
+
+		tempList
+
 	)
 )

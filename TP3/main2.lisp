@@ -79,41 +79,33 @@
 		(itemTemp NIL)
 		)
 
-			(dolist (current *BR*)
-				(setq allIngred T) ;on initialise allIngred pour tourner la boucle
+		(dolist (current *BR*)
+			(setq allIngred T) ;on initialise allIngred pour tourner la boucle
 
-				; (print "")
-				; (print "recette")
-				; (print current)
-				; (print "BF")
-				; (print *BF*)
-				; (read-line)
-				(if (not (equal NIL (assoc (car current) *BF*)) )()
-
+			; (print "")
+			; (print "recette")
+			; (print current)
+			; (print "BF")
+			; (print *BF*)
+			; (read-line)
+			(if (not (equal NIL (assoc (car current) *BF*))) ()
+					;***********************************************
+					;	ON TEST SI LA RECETTE COMPLETE EXISTE DEJA
+					;***********************************************
+						;Sinon on balance la recette dans verifyfacts
+				(if (equal (verifyFacts (car current)) T) 
 					(progn
-						;***********************************************
-						;	ON TEST SI LA RECETTE COMPLETE EXISTE DEJA
-						;***********************************************
-							;Sinon on balance la recette dans verifyfacts
-
-							(if (equal (verifyFacts (car current)) T) 
-								(progn
-									(add2BF (list (car current) (caddr current)))
-									;TO DO
-									; ajouter l'ajout de recettes finales dans add2BF
-									)
-								(progn
-									(add2BF (list (car current) 0))
-									)
-								)
-						);FIN TEST RECETTE COMPLETE
-
-				)
-
-
+						(add2BF (list (car current) (caddr current)))
+						;TO DO
+						; ajouter l'ajout de recettes finales dans add2BF
+						)
+					(progn
+						(add2BF (list (car current) 0))
+						)
+					)
 			)
 		)
-
+	)
 )
 
 

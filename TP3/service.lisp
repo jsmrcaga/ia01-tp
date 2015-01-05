@@ -8,11 +8,8 @@
 	NIL
 )
 
-(defun getRecipe (*BR* nameRecipe) 
-
+(defun getRecipe (*BR* nameRecipe)
 	(assoc nameRecipe *BR*)
-
-	
 )
 
 
@@ -280,7 +277,6 @@
 	)
 )
 
-
 (defun handleException (currentIngredient)
 
 	(if (equal (string (symbol-name (car currentIngredient))) "+T_PREPARATION")
@@ -313,10 +309,7 @@
 				)
 		)
 	)	
-
 )
-
-
 
 (defun add2BF (ingredient)
 	(if (listp ingredient)

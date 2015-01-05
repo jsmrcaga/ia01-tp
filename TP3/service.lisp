@@ -345,11 +345,15 @@
 		(dolist (currentIngredient (cadr (assoc recipe *BR*)))
 			(if (assoc (car currentIngredient) *BR*)
 				(progn
+
 					(push (car currentIngredient) tempList)
 					(push (cadr (searchIngredients (car currentIngredient))) tempList)
+
 				)
 			)
 		)
+
 		tempList
+
 	)
 )

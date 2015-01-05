@@ -71,8 +71,8 @@
 )
 
 (defun beginExploration ()
+
 	(dolist (current *BR*)
-		
 
 		; (print "")
 		; (print "recette")
@@ -90,9 +90,7 @@
 			(if (equal (verifyFacts (car current)) T) 
 				(progn
 					(add2BF (list (car current) (caddr current)))
-					;TO DO
-					; ajouter l'ajout de recettes finales dans add2BF
-					)
+				)
 				(add2BF (list (car current) 0))
 			)
 		)

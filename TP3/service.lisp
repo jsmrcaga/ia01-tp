@@ -336,3 +336,65 @@
 		)
 	)
 )
+
+(defun showFinishedRecipes()
+	(let (
+		(index 0)
+		(recipesOrder NIL)
+		(recipeChosen NIL)
+		(subRecipes NIL)
+		)
+
+	(print "Choisissez la recette a afficher grace au numero!")
+	(dolist (currentRecipe *BaseResult*)
+
+		(print index)
+		(princ ": ")
+		(princ currentRecipe)
+		(push (list index currentRecipe) recipesOrder)
+		(setq index (+ index 1))
+		)
+
+	(print "Entrez le numero de la recette a afficher: ")
+	(setq recipeChosen (parse-integer (read-line)))
+	(setq recipeChosen (cadr (assoc recipeChosen recipesOrder)))
+	
+
+
+	(setq subRecipes (searchIngredients recipeChosen))
+	(push recipeChosen subRecipes)
+
+	(dolist (currentRecipe subRecipes)
+		(print "Pour faire ")
+		(princ currentRecipe)
+		(princ " vous aurez besoin de:")
+
+			(dolist (currentIngredient (cadr (assoc currentRecipe *BR*)))
+				(print currentIngredient)
+				)
+		(print "*******************")
+		)
+	)
+
+)
+
+(defun searchIngredients (recipe)
+	(let (
+		(tempList NIL)
+		(temp NIL)
+		)
+
+		(dolist (currentIngredient (cadr (assoc recipe *BR*)))
+			(if (assoc currentIngredient *BR*)
+				(progn
+					(setq temp (searchIngredients currentIngredient))
+					(if (temp)
+						(append temp tempList)
+					)
+					(push currentIngredient tempList)
+				)
+			)
+
+		)
+	)
+)

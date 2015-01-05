@@ -72,28 +72,18 @@
 
 (defun beginExploration ()
 	(let (
-		(allIngred T)
-		(answer NIL)
-		(currentItem NIL)
-		(quantite NIL)
-		(itemTemp NIL)
+		
 		)
+			(dolist (current *BR*)
+				
 
-		(dolist (current *BR*)
-			(setq allIngred T) ;on initialise allIngred pour tourner la boucle
-
-			; (print "")
-			; (print "recette")
-			; (print current)
-			; (print "BF")
-			; (print *BF*)
-			; (read-line)
-			(if (not (equal NIL (assoc (car current) *BF*))) ()
-					;***********************************************
-					;	ON TEST SI LA RECETTE COMPLETE EXISTE DEJA
-					;***********************************************
-						;Sinon on balance la recette dans verifyfacts
-				(if (equal (verifyFacts (car current)) T) 
+				; (print "")
+				; (print "recette")
+				; (print current)
+				; (print "BF")
+				; (print *BF*)
+				; (read-line)
+				(if (not (equal NIL (assoc (car current) *BF*)) )()
 					(progn
 						(add2BF (list (car current) (caddr current)))
 						;TO DO
@@ -107,12 +97,3 @@
 		)
 	)
 )
-
-
-
-
-
-
-
-
-

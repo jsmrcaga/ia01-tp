@@ -85,10 +85,6 @@
 
 
 								(progn
-										;PAS ASSEZ DE L'INGREDIENT
-									;(print "Vous n'avez pas assez de ")
-									;(princ (car currentIngredient))
-									
 									(return-from verifyFacts NIL) ;juste pour "break" le loop
 									)
 

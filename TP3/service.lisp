@@ -82,19 +82,17 @@
 									)
 									
 									; on regarde si on peut effectivement le fabriquer
-									(if (equal (verifyFacts (car currentIngredient)) T) 
+									(if (equal (verifyFacts (car currentIngredient)) T)
+										; si oui, on met à jour la valeur
+										(if (assoc (car currentIngredient) *BF*)
+											(setq *BF* (remove (assoc (car currentIngredient) *BF*) *BF*))
+										)
 										(add2BF currentIngredient)
-										(progn
-											(setq allIngred NIL)
-											(print "On a pas de ")
-											(princ currentIngredient))
+										(setq allIngred NIL)
 									)
 
-									; s'il n'est pas "fabriquable" c'est la fin des haricots...
-									(progn
-										(add2BF (list (car currentIngredient) 0))
-										(return-from verifyFacts NIL)
-									)
+									; s'il n'est pas "fabriquable" c'est la fin des haricots, on ne peut rien faire...
+									(return-from verifyFacts NIL)
 
 								)
 							)

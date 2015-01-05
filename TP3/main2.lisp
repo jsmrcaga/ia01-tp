@@ -73,16 +73,9 @@
 	(print *BF*)
 
 	(beginExploration)
-<<<<<<< HEAD
-
 	(showFinishedRecipes)
 
 	NIL
-
-=======
-	(print *BF*)
-	(showFinishedRecipes)
->>>>>>> d5f3428e737b6c1fa464afce99038551fc34316a
 
 )
 

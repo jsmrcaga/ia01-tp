@@ -71,29 +71,22 @@
 )
 
 (defun beginExploration ()
-	(let (
+	(dolist (current *BR*)
 		
-		)
-			(dolist (current *BR*)
-				
 
-				; (print "")
-				; (print "recette")
-				; (print current)
-				; (print "BF")
-				; (print *BF*)
-				; (read-line)
-				(if (not (equal NIL (assoc (car current) *BF*)) )()
-					(progn
-						(add2BF (list (car current) (caddr current)))
-						;TO DO
-						; ajouter l'ajout de recettes finales dans add2BF
-						)
-					(progn
-						(add2BF (list (car current) 0))
-						)
-					)
-			)
+		; (print "")
+		; (print "recette")
+		; (print current)
+		; (print "BF")
+		; (print *BF*)
+		; (read-line)
+		(if (not (equal NIL (assoc (car current) *BF*)) )()
+			(progn
+				(add2BF (list (car current) (caddr current)))
+				;TO DO
+				; ajouter l'ajout de recettes finales dans add2BF
+				)
+			(add2BF (list (car current) 0))
 		)
 	)
 )

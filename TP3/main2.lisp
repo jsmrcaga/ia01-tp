@@ -59,9 +59,7 @@
 )
 
 (defun beginExploration ()
-	(let (
-		
-		)
+
 
 			(dolist (current *BR*)
 				
@@ -96,7 +94,7 @@
 
 
 			)
-		)
+		
 
 )
 

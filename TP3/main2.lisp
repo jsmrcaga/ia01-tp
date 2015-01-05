@@ -60,15 +60,11 @@
 
 (defun beginExploration ()
 	(let (
-		(allIngred T)
-		(answer NIL)
-		(currentItem NIL)
-		(quantite NIL)
-		(itemTemp NIL)
+		
 		)
 
 			(dolist (current *BR*)
-				(setq allIngred T) ;on initialise allIngred pour tourner la boucle
+				
 
 				; (print "")
 				; (print "recette")

@@ -326,7 +326,14 @@
 					(print "Attention, ce truc est deja dans la BF. Action d'ajout ignoree !")
 					(print ingredient)
 				)
-				(push ingredient *BF*)
+				(progn
+
+					(push ingredient *BF*)
+					(if (assoc '+CATEGORIE (assoc (car ingredient) *BR*)) 
+						(push (car ingredient) *BaseResult*)
+
+					)
+				)
 			)
 			(progn
 				(print "Erreur, l'ingredient n'est pas de la forme (igredient qte)")

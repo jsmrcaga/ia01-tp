@@ -75,8 +75,8 @@
 		
 
 		; (print "")
-		(print "recette")
-		(print current)
+		; (print "recette")
+		; (print current)
 		; (print "BF")
 		; (print *BF*)
 		; (read-line)
@@ -89,21 +89,13 @@
 
 			(if (equal (verifyFacts (car current)) T) 
 				(progn
-					(print "debug9")
 					(add2BF (list (car current) (caddr current)))
 					;TO DO
 					; ajouter l'ajout de recettes finales dans add2BF
 					)
-				(progn
-					(print "debug10")
-					(add2BF (list (car current) 0))
-					(print "debug11")
-				)
+				(add2BF (list (car current) 0))
 			)
 		)
-		(print "fin ")
-		(print current)
-		(print "")
 	)
 )
 

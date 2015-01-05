@@ -320,7 +320,7 @@
 				(progn
 
 					(push ingredient *BF*)
-					(if (assoc '+CATEGORIE (cadr (assoc (car ingredient)) *BR*)) 
+					(if (assoc '+CATEGORIE (cadr (assoc (car ingredient) *BR*))) 
 						(push (car ingredient) *BaseResult*)
 					)
 				)

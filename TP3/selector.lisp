@@ -12,9 +12,8 @@
 
 		(dolist (current *BR*) ;on prend la liste des recettes (regles) et on tourne dolist dessus (var current)
 			(dolist (currentIngredient (cadr current)) 	;on prend tous les nom d'ingredients de la recette actuelle (caadr current) 
-															;et on tourne dessus pour afficher ceux qui commencent par la lettre indiquée
-				;TO DO:
-				;Enlenver le deuxieme \
+														;et on tourne dessus pour afficher ceux qui commencent par la lettre indiquée
+
 				(if (and
 						; si currentIng (le nom de l'ingrédient) commence par la lettre cherchée
 						(equal (char lettre 0) (char (symbol-name (car currentIngredient)) 0))
@@ -59,16 +58,11 @@
 		(letter NIL)
 		)
 
-			(print "Si vous avez d'autres ingredients a ajouter veuillez indiquer la premiere lettre de l'ingredient (en majuscules)")
-			(setq letter (read-line))
-			(printIngred letter)
-			(if (y-or-n-p "Ajouter un autre ingredient?")
-			    (progn
-	    			(askForLetter)
-	    		)
-	  			
-			)
-
+		(print "Si vous avez d'autres ingredients a ajouter veuillez indiquer la premiere lettre de l'ingredient (en majuscules)")
+		(setq letter (read-line))
+		(printIngred letter)
+		(if (y-or-n-p "Ajouter un autre ingredient?")
+    			(askForLetter)
 		)
-
 	)
+)

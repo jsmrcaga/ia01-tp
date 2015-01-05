@@ -385,16 +385,17 @@
 		)
 
 		(dolist (currentIngredient (cadr (assoc recipe *BR*)))
-			(if (assoc currentIngredient *BR*)
+			(if (assoc (car currentIngredient) *BR*)
 				(progn
-					(setq temp (searchIngredients currentIngredient))
-					(if (temp)
+					(setq temp (searchIngredients (car currentIngredient)))
+					(if temp
 						(append temp tempList)
 					)
-					(push currentIngredient tempList)
+					(push (car currentIngredient) tempList)
 				)
 			)
 
 		)
+		(return-from searchIngredients tempList)
 	)
 )

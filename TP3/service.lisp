@@ -57,6 +57,8 @@
 		(currentItem NIL)
 		(itemTemp NIL)
 		)
+
+	(setq allIngred T)
 	(dolist (currentIngredient (cadr (assoc ingredient *BR*)))
 
 		(if (or (equal (string (symbol-name (car currentIngredient))) "+T_PREPARATION")

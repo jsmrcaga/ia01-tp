@@ -231,7 +231,7 @@
 
 	(omelette_aux_oignons
 		((appareil_omelette 1)
-			(preparation_a_loignon)
+			(preparation_a_loignon 1)
 			(huile_olive 5)
 			(+t_preparation 5)
 			(+difficulte 1
@@ -609,7 +609,7 @@
 			(+t_preparation 20)
 			(+difficulte 1)
 			(+categorie dessert))
-		(biscuits_sables 50)) ; XXX attention ! yen a besoin que de 3 pr le cheesecake !
+		50) ; XXX attention ! yen a besoin que de 3 pr le cheesecake !
 
 	(appareil_chocolat
 		((chocolat_noir 200)

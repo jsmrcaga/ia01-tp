@@ -6,8 +6,7 @@
 ;		CHANGER POUR PATH LOCAL
 ;********************************
 (load "br.lisp")
-(load "service.lisp")
-(load "selector.lisp")
+(load "fonctions.lisp")
 
 (defun init ()
 	(getFirstIngredients)

@@ -54,7 +54,7 @@
 			(beurre 10)
 			(farine 130)
 			(lait 500)
-			(oeuf 3); ? XXX
+			(oeuf 3)
 			(creme_liquide 100)))
 	(print *BF*)
 	(beginExploration)

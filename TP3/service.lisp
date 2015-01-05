@@ -8,22 +8,12 @@
 	NIL
 )
 
-(defun getRecipe (*BR* nameRecipe)
-	(assoc nameRecipe *BR*)
-)
-
 
 (defun getFirstIngredients () 
 
 	(let (
 		(currentItem NIL)
-		(selectedIngred NIL)
-		(ingredBase '(
-			sucre
-			oeuf
-			farine
-			lait
-			beurre))
+		(ingredBase '(sucre oeuf farine lait beurre))
 		)
 
 		(print "Merci de donner le poids de chacun des ingredients suivant en votre possession (0 si vous n'en avez pas)")
@@ -41,13 +31,12 @@
 			(add2BF (reverse currentItem))
 
 			(setq currentItem NIL)
-			)
+		)
 	)
 )
 
 (defun verifyFacts (ingredient)
 	(let (
-		
 		(answer NIL)
 		(quantite NIL)
 		(allIngred T)
@@ -55,93 +44,69 @@
 		(itemTemp NIL)
 		)
 
-	(setq allIngred T)
-	(dolist (currentIngredient (cadr (assoc ingredient *BR*)))
-		(if (or (equal (string (symbol-name (car currentIngredient))) "+T_PREPARATION")
-							(equal (string (symbol-name (car currentIngredient))) "+DIFFICULTE")
-							(equal (string (symbol-name (car currentIngredient))) "+CATEGORIE"))
-						(progn
-							(print (string (symbol-name (car currentIngredient))))
-							(if (handleException currentIngredient) (return))
-						
-						)
+		(dolist (currentIngredient (cadr (assoc ingredient *BR*))) ; pour chaque ingrédient de la recette courante
+			(if (or (equal (string (symbol-name (car currentIngredient))) "+T_PREPARATION")
+								(equal (string (symbol-name (car currentIngredient))) "+DIFFICULTE")
+								(equal (string (symbol-name (car currentIngredient))) "+CATEGORIE"))
+				; si c'est une exception
+				; si ça ne correspond pas à la BF (= aux souhaits de l'utilisateur), on quitte
+				(if (handleException currentIngredient) (return))
 
-						(progn
-
-		(if  (not (equal NIL (assoc (car currentIngredient) *BF*)))
-						;Explication du if:
-
-							;si l'assoc retourne qq chose: l'ingredient existe dans la base de faits
+				; sinon, si c'est un ingrédient normal
+				(progn
+					(if  (not (equal NIL (assoc (car currentIngredient) *BF*)))
+						; si l'assoc retourne qq chose : l'ingredient existe dans la base de faits
 
 						;*******************
 						;	Si l'ingredient est dans la base de faits
 						;*******************
-						(progn
 							(if (>= (cadr (assoc (car currentIngredient) *BF*)) (cadr currentIngredient)) ;si la qtte est superieure a la regle
-								;on utilise cadr pour prendre la valeur numerique de quantite sans parentheses
-								(
-									;all good
-									)
+
+								; (on utilise cadr pour prendre la valeur numerique de quantite sans parentheses)
+								() ; all good
 
 
-								(progn
-									(return-from verifyFacts NIL) ;juste pour "break" le loop
-									)
-
-								)
-						)
+								; il n'y a pas assez de l'ingrédient actuel
+								(return-from verifyFacts NIL) ;juste pour "break" le loop
+							)
 
 						;*******************
 						;	Si l'ingredient n'est pas dans la base de faits
 						;*******************
-						(progn
-							(if (and *QuestionOk* (askQuestion currentIngredient))
-								()
+							(if (and *QuestionOk* (askQuestion currentIngredient)) ; si en posant la question on obtient l'ingrédient
+								() ; then, all ok !
 
 								;else si la reponse est NON (= il n'y en a pas assez / on ne pose pas la question)
-								(progn
-									;SI ON NA PAS LINGREDIENT ON CHECK SIL EST DANS LA BR POUR VOIR SI ON PEUT LE CONSTRUIRE
-										(if (and (equal NIL (assoc (car currentIngredient) *BF*)) 
-											(not (equal NIL (assoc (car currentIngredient) *BR*)))
-											)
-											 ;donc s'il existe dans les recettes et n'existe pas dans la BF
-											
-											(progn
-												(if (equal (verifyFacts (car currentIngredient)) T) 
-													(add2BF currentIngredient)
-													(progn
-														(setq allIngred NIL)
-														(print "On a pas de ")
-														(princ currentIngredient))
-												)
-											)
-
-											(progn
-												(push 0 itemTemp)
-												(push (car currentIngredient) itemTemp)
-												(add2BF itemTemp)
-												(setq itemTemp NIL)
-												(return-from verifyFacts NIL)
-											)
-
+								; ---> on check si il est dans la BR pour voir si on peut fabriquer l'ingrédient courant
+									 ; càd s'il existe dans les recettes et n'existe pas dans la BF
+								(if (and (equal NIL (assoc (car currentIngredient) *BF*))
+									(not (equal NIL (assoc (car currentIngredient) *BR*)))
+									)
+									
+									; on regarde si on peut effectivement le fabriquer
+									(if (equal (verifyFacts (car currentIngredient)) T)
+										; si oui, on met à jour la valeur
+										(if (assoc (car currentIngredient) *BF*)
+											(setq *BF* (remove (assoc (car currentIngredient) *BF*) *BF*))
 										)
+										(add2BF currentIngredient)
+										(setq allIngred NIL)
+									)
+
+									; s'il n'est pas "fabriquable" c'est la fin des haricots, on ne peut rien faire...
+									(return-from verifyFacts NIL)
+
 								)
 							)
-					
+					); FIN IF l'ingrédient est/n'est pas dans la BF
+				); FIN PROGN
+			) ; FIN IF c'est une exception ou un ingrédiant normal
+		) ; FIN DOLIST
 
-
-
-
-						);FIN SI L'INGREDIENT NEST PAS DANS LA BASE DES FAITS
-					)
-							); FIN PROGN DU DEBUT
-					)
-
-		) ;fin do list
-
+		; si tous les ingrédients de la recette sont OK, la recette est vérifiée (= faisable)
 		(if (equal allIngred T)
-			(return-from verifyFacts T)
-			(return-from verifyFacts NIL)
+			T
+			NIL
 		)
 	)
 )
@@ -220,7 +185,7 @@
 		(write-char #\space) ; retour à la ligne sans print
 
 		(if (eq (cadr ingredient) 1)
-			(progn
+			(progn ; si on fait la phrase au singulier
 				(princ "Possedez-vous un(e) ")
 				(princ (car ingredient))
 				(princ " ? Y/N ")
@@ -244,7 +209,7 @@
 					)
 					)
 				)
-			(progn
+			(progn ; si on la fait au pluriel
 				(princ "Possedez-vous de la/du ")
 				(princ (car ingredient))
 				(princ " ? Indiquez une quantite ")
@@ -294,15 +259,15 @@
 		)
 	)
 
-	(if (and (equal (string (symbol-name (car currentIngredient))) "+CATEGORIE")
-		(not (equal (string (cadr (assoc '+CATEGORIE *BF*))) (string (cadr currentIngredient)))) ;Si la categorie n'est pas la meme
-		)
-		(progn 
-			(if (not (equal (string (cadr (assoc '+CATEGORIE *BF*))) "TOUT")) ; Si ce n'est pas tout on quitte la boucle
-				(return-from handleException T)
-				)
-		)
-	)	
+	; (if (and (equal (string (symbol-name (car currentIngredient))) "+CATEGORIE")
+	; 	(not (equal (string (cadr (assoc '+CATEGORIE *BF*))) (string (cadr currentIngredient)))) ;Si la categorie n'est pas la meme
+	; 	)
+	; 	(progn 
+	; 		(if (not (equal (string (cadr (assoc '+CATEGORIE *BF*))) "TOUT")) ; Si ce n'est pas tout on quitte la boucle
+	; 			(return-from handleException T)
+	; 			)
+	; 	)
+	; )	
 )
 
 (defun add2BF (ingredient)
@@ -314,7 +279,6 @@
 					(print ingredient)
 				)
 				(progn
-
 					(push ingredient *BF*)
 					(if (and (assoc '+CATEGORIE (cadr (assoc (car ingredient) *BR*))) (not (eq (cadr ingredient) 0)))
 						(push (car ingredient) *BaseResult*)
@@ -343,13 +307,12 @@
 
 	(print "Choisissez la recette a afficher grace au numero!")
 	(dolist (currentRecipe *BaseResult*)
-
 		(print index)
 		(princ ": ")
 		(princ currentRecipe)
 		(push (list index currentRecipe) recipesOrder)
 		(setq index (+ index 1))
-		)
+	)
 
 	(print "Entrez le numero de la recette a afficher: ")
 	(setq recipeChosen (parse-integer (read-line)))

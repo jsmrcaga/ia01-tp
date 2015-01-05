@@ -223,7 +223,7 @@
 		1)
 
 	(appareil_omelette
-		((oeuf 3); ? XXX
+		((oeuf 3)
 			(creme_liquide 100)
 			(+t_preparation 5)
 			(+difficulte 1))
@@ -609,11 +609,11 @@
 			(+t_preparation 20)
 			(+difficulte 1)
 			(+categorie dessert))
-		50) ; XXX attention ! yen a besoin que de 3 pr le cheesecake !
+		50)
 
 	(appareil_chocolat
 		((chocolat_noir 200)
-			(mascarpone 250) ; XXX 2x moins que la recette de base
+			(mascarpone 250)
 			(fromage_blanc 150)
 			(oeuf 4)
 			(sucre 100)

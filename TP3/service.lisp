@@ -61,8 +61,10 @@
 						;	Si l'ingredient est dans la base de faits
 						;*******************
 							(if (>= (cadr (assoc (car currentIngredient) *BF*)) (cadr currentIngredient)) ;si la qtte est superieure a la regle
+
 								; (on utilise cadr pour prendre la valeur numerique de quantite sans parentheses)
 								() ; all good
+
 
 								; il n'y a pas assez de l'ingrédient actuel
 								(return-from verifyFacts NIL) ;juste pour "break" le loop

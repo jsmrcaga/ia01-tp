@@ -22,10 +22,10 @@
 
 (defun main ()
 
-	(printExplanation)
-	(getFirstIngredients)
-	(askForLetter)
-	(askForDishFeatures)
+	; (printExplanation)
+	; (getFirstIngredients)
+	; (askForLetter)
+	; (askForDishFeatures)
 
 	(print "Voulez-vous qu'on vous demande s'il manque des ingrédients ? Y/N")
 	(let (answer)
@@ -43,7 +43,7 @@
 		)
 	)
 
-	;(setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 2) (+CATEGORIE GOUTER) (GRAINS_DE_SUCRE 100) (BEURRE 500) (LAIT 500) (FARINE 500) (OEUF 500) (SUCRE 500) (EAU 20000) (SEL 50)))
+	(setq *BF* '((+T_PREPARATION MOYEN) (+DIFFICULTE 2) (+CATEGORIE GOUTER) (GRAINS_DE_SUCRE 100) (BEURRE 500) (LAIT 500) (FARINE 500) (OEUF 500) (SUCRE 500) (EAU 20000) (SEL 50)))
 	; (setq *BF* '((EAU 20000)(SEL 50)(blanc_oeuf 1)
 	; 		(extrait_vanille 5)
 	; 		(sucre 150)

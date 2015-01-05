@@ -84,10 +84,12 @@
 									; on regarde si on peut effectivement le fabriquer
 									(if (equal (verifyFacts (car currentIngredient)) T)
 										; si oui, on met à jour la valeur
-										(if (assoc (car currentIngredient) *BF*)
-											(setq *BF* (remove (assoc (car currentIngredient) *BF*) *BF*))
+										(progn
+											(if (assoc (car currentIngredient) *BF*)
+												(setq *BF* (remove (assoc (car currentIngredient) *BF*) *BF*))
+											)
+											(add2BF currentIngredient)
 										)
-										(add2BF currentIngredient)
 										(setq allIngred NIL)
 									)
 
